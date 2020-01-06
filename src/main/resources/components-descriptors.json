@@ -158,7 +158,7 @@
                   "displayName": "Create new queue",
                   "propertyName": "create",
                   "defaultValue": "###USE_DEFAULT_VALUE###",
-                  "propertyInfo": "If true, a queue with the name provided in the \u0027Queue Name\u0027 field will be created in the broker.If false the queue is considered already defined in the broker and an error will be thrown if the queue does not exists (default: false).",
+                  "propertyInfo": "If true, a queue with the name provided in the \u0027Queue Name\u0027 field will be created in the broker. If false the queue is considered already defined in the broker and an error will be thrown if the queue does not exists (default: false).",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -554,7 +554,7 @@
                   "displayName": "Create new queue",
                   "propertyName": "create",
                   "defaultValue": "###USE_DEFAULT_VALUE###",
-                  "propertyInfo": "If true, a queue with the name provided in the \u0027Queue Name\u0027 field will be created in the broker.If false the queue is considered already defined in the broker and an error will be thrown if the queue does not exists (default: false).",
+                  "propertyInfo": "If true, a queue with the name provided in the \u0027Queue Name\u0027 field will be created in the broker. If false the queue is considered already defined in the broker and an error will be thrown if the queue does not exists (default: false).",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
