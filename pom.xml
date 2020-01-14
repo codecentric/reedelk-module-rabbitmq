@@ -12,7 +12,7 @@
     </parent>
 
     <packaging>bundle</packaging>
-    <version>0.6.1</version>
+    <version>0.6.2-SNAPSHOT</version>
     <artifactId>module-rabbitmq</artifactId>
 
     <properties>
