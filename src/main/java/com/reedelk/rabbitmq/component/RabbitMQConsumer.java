@@ -62,9 +62,9 @@ public class RabbitMQConsumer extends AbstractInbound {
 
     @Override
     public void onStart() {
-        requireNotBlank(queueName, "Queue Name must not be empty");
+        requireNotBlank(RabbitMQConsumer.class, queueName, "Queue Name must not be empty");
         if (configuration == null) {
-            requireNotBlank(connectionURI, "Connection URI must not be empty");
+            requireNotBlank(RabbitMQConsumer.class, connectionURI, "Connection URI must not be empty");
             connection = ConnectionFactoryProvider.from(connectionURI);
         } else {
             connection = ConnectionFactoryProvider.from(configuration);

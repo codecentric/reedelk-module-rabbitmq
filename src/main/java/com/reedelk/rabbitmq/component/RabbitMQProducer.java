@@ -93,7 +93,7 @@ public class RabbitMQProducer implements ProcessorSync {
     @Override
     public void initialize() {
         if (configuration == null) {
-            requireNotBlank(connectionURI, "Connection URI must not be empty");
+            requireNotBlank(RabbitMQProducer.class, connectionURI, "Connection URI must not be empty");
             connection = ConnectionFactoryProvider.from(connectionURI);
         } else {
             connection = ConnectionFactoryProvider.from(configuration);
