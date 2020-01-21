@@ -65,7 +65,7 @@ public class RabbitMQProducer implements ProcessorSync {
     private Connection connection;
 
     @Override
-    public Message apply(Message message, FlowContext flowContext) {
+    public Message apply(FlowContext flowContext, Message message) {
 
         String queueName = scriptEngine.evaluate(this.queueName, flowContext, message)
                 .orElseThrow(() -> new ESBException("Queue name not found"));

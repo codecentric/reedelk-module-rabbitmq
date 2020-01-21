@@ -34,7 +34,7 @@ public class ConsumerDeliverCallbackExplicitAck extends ConsumerDeliverCallback 
         final long deliveryTag = delivery.getEnvelope().getDeliveryTag();
         listener.onEvent(message, new OnResult() {
             @Override
-            public void onResult(Message message, FlowContext flowContext) {
+            public void onResult(FlowContext flowContext, Message message) {
                 try {
                     channel.basicAck(deliveryTag, false);
                 } catch (IOException e) {

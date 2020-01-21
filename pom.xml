@@ -17,6 +17,7 @@
     <properties>
         <maven.compiler.release>8</maven.compiler.release>
         <rabbitmq.version>5.8.0</rabbitmq.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
