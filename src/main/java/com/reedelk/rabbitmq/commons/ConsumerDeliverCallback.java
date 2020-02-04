@@ -5,12 +5,9 @@ import com.rabbitmq.client.DeliverCallback;
 import com.rabbitmq.client.Delivery;
 import com.rabbitmq.client.Envelope;
 import com.reedelk.rabbitmq.component.RabbitMQConsumer;
-import com.reedelk.runtime.api.commons.TypedContentUtils;
 import com.reedelk.runtime.api.message.*;
 import com.reedelk.runtime.api.message.content.MimeType;
-import com.reedelk.runtime.api.message.content.TypedContent;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -27,18 +24,16 @@ abstract class ConsumerDeliverCallback implements DeliverCallback {
     }
 
     @Override
-    public void handle(String consumerTag, Delivery delivery) throws IOException {
+    public void handle(String consumerTag, Delivery delivery) {
         // Message Content
         byte[] content = delivery.getBody();
-        TypedContent<?> typedContent = TypedContentUtils.from(content, consumedMessageMimeType);
 
         // Message Attributes
         MessageAttributes messageAttributes = createAttributes(delivery);
 
         // Build Message
         Message inboundMessage = MessageBuilder.get()
-                .typedContent(typedContent)
-                .mimeType(consumedMessageMimeType)
+                .withBinary(content, consumedMessageMimeType)
                 .attributes(messageAttributes)
                 .build();
 
