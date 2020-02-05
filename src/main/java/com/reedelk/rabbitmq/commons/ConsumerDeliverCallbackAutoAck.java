@@ -2,7 +2,6 @@ package com.reedelk.rabbitmq.commons;
 
 import com.rabbitmq.client.Delivery;
 import com.reedelk.runtime.api.component.InboundEventListener;
-import com.reedelk.runtime.api.component.OnResult;
 import com.reedelk.runtime.api.message.Message;
 import com.reedelk.runtime.api.message.content.MimeType;
 
@@ -21,6 +20,6 @@ public class ConsumerDeliverCallbackAutoAck extends ConsumerDeliverCallback {
     @Override
     protected void onEvent(Message message, Delivery delivery) {
         // Notify Event
-        listener.onEvent(message, new OnResult() {});
+        listener.onEvent(message);
     }
 }
