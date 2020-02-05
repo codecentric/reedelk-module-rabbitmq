@@ -37,9 +37,9 @@ public class ConsumerDeliverCallbackExplicitAck extends ConsumerDeliverCallback 
             public void onResult(FlowContext flowContext, Message message) {
                 try {
                     channel.basicAck(deliveryTag, false);
-                } catch (IOException e) {
-                    String errorMessage = String.format("An error occurred while sending ack for tag=[%d]: %s", deliveryTag, e.getMessage());
-                    logger.error(errorMessage, e);
+                } catch (IOException exchange) {
+                    String errorMessage = String.format("An error occurred while sending ack for tag=[%d]: %s", deliveryTag, exchange.getMessage());
+                    logger.error(errorMessage, exchange);
                 }
             }
         });
