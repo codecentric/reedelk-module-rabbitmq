@@ -2,7 +2,7 @@
   "componentDescriptors": [
     {
       "hidden": false,
-      "displayName": "RabbitMQ Consumer",
+      "displayName": "RabbitMQConsumer",
       "fullyQualifiedName": "com.reedelk.rabbitmq.component.RabbitMQConsumer",
       "componentType": "INBOUND",
       "componentPropertyDescriptors": [
@@ -22,7 +22,7 @@
                   "displayName": "Username",
                   "propertyName": "userName",
                   "defaultValue": "###USE_DEFAULT_VALUE###",
-                  "propertyInfo": "The AMQP user name to use when connecting to the broker (default: guest).",
+                  "propertyInfo": "The AMQP user name to use when connecting to the broker.",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -36,7 +36,7 @@
                   "displayName": "Password",
                   "propertyName": "password",
                   "defaultValue": "###USE_DEFAULT_VALUE###",
-                  "propertyInfo": "The AMQP password to use when connecting to the broker (default: guest).",
+                  "propertyInfo": "The AMQP password to use when connecting to the broker.",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -50,7 +50,7 @@
                   "displayName": "Virtual Host",
                   "propertyName": "virtualHost",
                   "defaultValue": "###USE_DEFAULT_VALUE###",
-                  "propertyInfo": "The virtual host to use when connecting to the broker (default: \u0027/\u0027).",
+                  "propertyInfo": "The virtual host to use when connecting to the broker.",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -64,7 +64,7 @@
                   "displayName": "Host Name",
                   "propertyName": "hostName",
                   "defaultValue": "###USE_DEFAULT_VALUE###",
-                  "propertyInfo": "The host to use for connections to the broker (default: localhost).",
+                  "propertyInfo": "The host to use for connections to the broker.",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -78,7 +78,7 @@
                   "displayName": "Port Number",
                   "propertyName": "portNumber",
                   "defaultValue": "###USE_DEFAULT_VALUE###",
-                  "propertyInfo": "The port to use for connections to the broker (default: 5672).",
+                  "propertyInfo": "The port to use for connections to the broker.",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -91,7 +91,7 @@
                   "displayName": "Automatic Recovery",
                   "propertyName": "automaticRecovery",
                   "defaultValue": "true",
-                  "propertyInfo": "If true automatic recovery of this connection is performed when the network connection with the server fails (default: true).",
+                  "propertyInfo": "If true automatic recovery of this connection is performed when the network connection with the server fails.",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -158,7 +158,7 @@
                   "displayName": "Create new queue",
                   "propertyName": "create",
                   "defaultValue": "###USE_DEFAULT_VALUE###",
-                  "propertyInfo": "If true, a queue with the name provided in the \u0027Queue Name\u0027 field will be created in the broker. If false the queue is considered already defined in the broker and an error will be thrown if the queue does not exists (default: false).",
+                  "propertyInfo": "If true, a queue with the name provided in the \u0027Queue Name\u0027 field will be created in the broker. If false the queue is considered already defined in the broker and an error will be thrown if the queue does not exists.",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -176,7 +176,7 @@
                   "displayName": "Durable after restart",
                   "propertyName": "durable",
                   "defaultValue": "###USE_DEFAULT_VALUE###",
-                  "propertyInfo": "If true the queue will survive a server restart (default: false).",
+                  "propertyInfo": "If true the queue will survive a server restart.",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -194,7 +194,7 @@
                   "displayName": "Exclusive to connection",
                   "propertyName": "exclusive",
                   "defaultValue": "###USE_DEFAULT_VALUE###",
-                  "propertyInfo": "If true the use of the queue will be restricted to this connection (default: false).",
+                  "propertyInfo": "If true the use of the queue will be restricted to this connection.",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -212,7 +212,7 @@
                   "displayName": "Auto Delete",
                   "propertyName": "autoDelete",
                   "defaultValue": "###USE_DEFAULT_VALUE###",
-                  "propertyInfo": "If true the server will delete the queue when it is no longer in use (default: false).",
+                  "propertyInfo": "If true the server will delete the queue when it is no longer in use.",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -385,7 +385,7 @@
     },
     {
       "hidden": false,
-      "displayName": "RabbitMQ Producer",
+      "displayName": "RabbitMQProducer",
       "fullyQualifiedName": "com.reedelk.rabbitmq.component.RabbitMQProducer",
       "componentType": "PROCESSOR",
       "componentPropertyDescriptors": [
@@ -405,7 +405,7 @@
                   "displayName": "Username",
                   "propertyName": "userName",
                   "defaultValue": "###USE_DEFAULT_VALUE###",
-                  "propertyInfo": "The AMQP user name to use when connecting to the broker (default: guest).",
+                  "propertyInfo": "The AMQP user name to use when connecting to the broker.",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -419,7 +419,7 @@
                   "displayName": "Password",
                   "propertyName": "password",
                   "defaultValue": "###USE_DEFAULT_VALUE###",
-                  "propertyInfo": "The AMQP password to use when connecting to the broker (default: guest).",
+                  "propertyInfo": "The AMQP password to use when connecting to the broker.",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -433,7 +433,7 @@
                   "displayName": "Virtual Host",
                   "propertyName": "virtualHost",
                   "defaultValue": "###USE_DEFAULT_VALUE###",
-                  "propertyInfo": "The virtual host to use when connecting to the broker (default: \u0027/\u0027).",
+                  "propertyInfo": "The virtual host to use when connecting to the broker.",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -447,7 +447,7 @@
                   "displayName": "Host Name",
                   "propertyName": "hostName",
                   "defaultValue": "###USE_DEFAULT_VALUE###",
-                  "propertyInfo": "The host to use for connections to the broker (default: localhost).",
+                  "propertyInfo": "The host to use for connections to the broker.",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -461,7 +461,7 @@
                   "displayName": "Port Number",
                   "propertyName": "portNumber",
                   "defaultValue": "###USE_DEFAULT_VALUE###",
-                  "propertyInfo": "The port to use for connections to the broker (default: 5672).",
+                  "propertyInfo": "The port to use for connections to the broker.",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -474,7 +474,7 @@
                   "displayName": "Automatic Recovery",
                   "propertyName": "automaticRecovery",
                   "defaultValue": "true",
-                  "propertyInfo": "If true automatic recovery of this connection is performed when the network connection with the server fails (default: true).",
+                  "propertyInfo": "If true automatic recovery of this connection is performed when the network connection with the server fails.",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {

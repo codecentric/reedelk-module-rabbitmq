@@ -18,43 +18,55 @@ import static java.util.Optional.of;
 import static java.util.Optional.ofNullable;
 import static org.osgi.service.component.annotations.ServiceScope.PROTOTYPE;
 
-@ESBComponent("RabbitMQ Consumer")
+@ModuleComponent(
+        name="RabbitMQ Consumer",
+        description="Consumes messages from a RabbitMQ broker queue whenever a message " +
+                "is published to the subscribed queue. The component might be configured " +
+                "to create the source queue if it does not exists already. " +
+                "The RabbitMQ Consumer is an Inbound component and it can only be placed " +
+                "at the beginning of a flow.")
 @Component(service = RabbitMQConsumer.class, scope = PROTOTYPE)
 public class RabbitMQConsumer extends AbstractInbound {
 
     @Property("Connection Config")
     private ConnectionFactoryConfiguration configuration;
 
-    @Property("Connection URI")
-    @PropertyInfo("Configure a connection using the provided AMQP URI " +
-            "containing the connection data.")
     @Hint("amqp://guest:guest@localhost:5672")
-    @Default("amqp://guest:guest@localhost:5672")
+    @InitValue("amqp://guest:guest@localhost:5672")
+    @Example("amqp://guest:guest@localhost:5672")
     @When(propertyName = "configuration", propertyValue = When.NULL)
     @When(propertyName = "configuration", propertyValue = "{'ref': '" + When.BLANK + "'}")
+    @Property("Connection URI")
+    @PropertyDescription("Configure a connection using the provided AMQP URI " +
+            "containing the connection data.")
     private String connectionURI;
 
-    @Property("Queue Name")
-    @PropertyInfo("Defines the name of the queue this consumer will be consuming messages from.")
     @Hint("queue_inbound")
+    @Example("queue_inbound")
+    @Property("Queue Name")
+    @PropertyDescription("Defines the name of the queue this consumer will be consuming messages from.")
     private String queueName;
 
     @Property("Queue Settings")
     private ConsumerQueueConfiguration queueConfiguration;
 
+    @MimeTypeCombo
+    @Example(MimeType.MIME_TYPE_TEXT_PLAIN)
+    @InitValue(MimeType.MIME_TYPE_TEXT_PLAIN)
+    @DefaultRenameMe(MimeType.MIME_TYPE_APPLICATION_BINARY)
     @Property("Content Mime Type")
-    @PropertyInfo("The Mime Type of the consumed content allows to create " +
+    @PropertyDescription("The Mime Type of the consumed content allows to create " +
             "a flow message with a suitable content type for the following flow components " +
             "(e.g a 'text/plain' mime type converts the consumed content to a string, " +
             "a 'application/octet-stream' keeps the consumed content as byte array).")
-    @MimeTypeCombo
-    @Default(MimeType.MIME_TYPE_TEXT_PLAIN)
     private String messageMimeType;
 
+    @Example("true")
+    @InitValue("true")
+    @DefaultRenameMe("false")
     @Property("Auto Acknowledge")
-    @PropertyInfo("True to immediately consider messages delivered by the broker as soon as the flow starts." +
+    @PropertyDescription("True to immediately consider messages delivered by the broker as soon as the flow starts." +
             " False to acknowledge the message only if the flow executed successfully.")
-    @Default("true")
     private boolean autoAck;
 
     private Channel channel;
@@ -73,7 +85,7 @@ public class RabbitMQConsumer extends AbstractInbound {
         try {
             channel = connection.createChannel();
             createQueueIfNeeded();
-            MimeType queueMessageContentType = MimeType.parse(messageMimeType);
+            MimeType queueMessageContentType = MimeType.parse(messageMimeType, MimeType.APPLICATION_BINARY);
             if (autoAck) {
                 channel.basicConsume(queueName, true,
                         new ConsumerDeliverCallbackAutoAck( this, queueMessageContentType),

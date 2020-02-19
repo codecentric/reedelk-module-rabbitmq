@@ -11,35 +11,47 @@ import static org.osgi.service.component.annotations.ServiceScope.PROTOTYPE;
 @Component(service = ConnectionFactoryConfiguration.class, scope = PROTOTYPE)
 public class ConnectionFactoryConfiguration implements Implementor {
 
-    @Property("Username")
-    @PropertyInfo("The AMQP user name to use when connecting to the broker (default: guest).")
     @Hint("guest")
+    @Example("guest")
+    @DefaultRenameMe("guest")
+    @Property("Username")
+    @PropertyDescription("The AMQP user name to use when connecting to the broker.")
     private String userName;
 
-    @Property("Password")
-    @PropertyInfo("The AMQP password to use when connecting to the broker (default: guest).")
     @Hint("guest")
+    @Example("guest")
+    @DefaultRenameMe("guest")
+    @Property("Password")
+    @PropertyDescription("The AMQP password to use when connecting to the broker.")
     private String password;
 
-    @Property("Virtual Host")
-    @PropertyInfo("The virtual host to use when connecting to the broker (default: '/').")
     @Hint("/")
+    @Example("/")
+    @DefaultRenameMe("/")
+    @Property("Virtual Host")
+    @PropertyDescription("The virtual host to use when connecting to the broker.")
     private String virtualHost;
 
-    @Property("Host Name")
-    @PropertyInfo("The host to use for connections to the broker (default: localhost).")
     @Hint("localhost")
+    @Example("rabbitmq.domain.com")
+    @DefaultRenameMe("localhost")
+    @Property("Host Name")
+    @PropertyDescription("The host to use for connections to the broker.")
     private String hostName;
 
-    @Property("Port Number")
-    @PropertyInfo("The port to use for connections to the broker (default: 5672).")
     @Hint("5672")
+    @Example("5672")
+    @DefaultRenameMe("5672")
+    @Property("Port Number")
+    @PropertyDescription("The port to use for connections to the broker.")
     private Integer portNumber;
 
+    @InitValue("true")
+    @Example("true")
+    @DefaultRenameMe("false")
     @Property("Automatic Recovery")
-    @PropertyInfo("If true automatic recovery of this connection " +
-            "is performed when the network connection with the server fails (default: true).")
-    @Default("true")
+    @PropertyDescription("If true automatic recovery of this connection " +
+            "is performed when the network connection with the server fails.")
     private Boolean automaticRecovery;
 
     public void setUserName(String userName) {

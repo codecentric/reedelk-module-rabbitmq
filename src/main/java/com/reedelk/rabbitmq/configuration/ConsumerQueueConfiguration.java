@@ -1,9 +1,6 @@
 package com.reedelk.rabbitmq.configuration;
 
-import com.reedelk.runtime.api.annotation.Collapsible;
-import com.reedelk.runtime.api.annotation.Property;
-import com.reedelk.runtime.api.annotation.PropertyInfo;
-import com.reedelk.runtime.api.annotation.When;
+import com.reedelk.runtime.api.annotation.*;
 import com.reedelk.runtime.api.component.Implementor;
 import org.osgi.service.component.annotations.Component;
 
@@ -14,26 +11,34 @@ import static org.osgi.service.component.annotations.ServiceScope.PROTOTYPE;
 @Component(service = ConsumerQueueConfiguration.class, scope = PROTOTYPE)
 public class ConsumerQueueConfiguration implements Implementor {
 
-    @Property("Create new queue")
-    @PropertyInfo("If true, a queue with the name provided in the 'Queue Name' field will be created in the broker. " +
-            "If false the queue is considered already defined in the broker and an error will be thrown if the" +
-            " queue does not exists (default: false).")
+    @Example("true")
+    @DefaultRenameMe("false")
     @When(propertyName = "queueName", propertyValue = When.NOT_SCRIPT)
+    @Property("Create new queue")
+    @PropertyDescription("If true, a queue with the name provided in the 'Queue Name' field will be created in the broker. " +
+            "If false the queue is considered already defined in the broker and an error will be thrown if the" +
+            " queue does not exists.")
     private Boolean create;
 
-    @Property("Durable after restart")
-    @PropertyInfo("If true the queue will survive a server restart (default: false).")
+    @Example("true")
+    @DefaultRenameMe("false")
     @When(propertyName = "create", propertyValue = "true")
+    @Property("Durable after restart")
+    @PropertyDescription("If true the queue will survive a server restart.")
     private Boolean durable;
 
-    @Property("Exclusive to connection")
-    @PropertyInfo("If true the use of the queue will be restricted to this connection (default: false).")
+    @Example("true")
+    @DefaultRenameMe("false")
     @When(propertyName = "create", propertyValue = "true")
+    @Property("Exclusive to connection")
+    @PropertyDescription("If true the use of the queue will be restricted to this connection.")
     private Boolean exclusive;
 
-    @Property("Auto Delete")
-    @PropertyInfo("If true the server will delete the queue when it is no longer in use (default: false).")
+    @Example("true")
+    @DefaultRenameMe("false")
     @When(propertyName = "create", propertyValue = "true")
+    @Property("Auto Delete")
+    @PropertyDescription("If true the server will delete the queue when it is no longer in use.")
     private Boolean autoDelete;
 
     public void setDurable(Boolean durable) {
