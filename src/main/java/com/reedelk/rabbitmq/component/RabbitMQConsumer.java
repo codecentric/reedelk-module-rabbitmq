@@ -53,7 +53,7 @@ public class RabbitMQConsumer extends AbstractInbound {
     @MimeTypeCombo
     @Example(MimeType.MIME_TYPE_TEXT_PLAIN)
     @InitValue(MimeType.MIME_TYPE_TEXT_PLAIN)
-    @DefaultRenameMe(MimeType.MIME_TYPE_APPLICATION_BINARY)
+    @DefaultValue(MimeType.MIME_TYPE_APPLICATION_BINARY)
     @Property("Content Mime Type")
     @PropertyDescription("The Mime Type of the consumed content allows to create " +
             "a flow message with a suitable content type for the following flow components " +
@@ -63,7 +63,7 @@ public class RabbitMQConsumer extends AbstractInbound {
 
     @Example("true")
     @InitValue("true")
-    @DefaultRenameMe("false")
+    @DefaultValue("false")
     @Property("Auto Acknowledge")
     @PropertyDescription("True to immediately consider messages delivered by the broker as soon as the flow starts." +
             " False to acknowledge the message only if the flow executed successfully.")

@@ -12,7 +12,7 @@ import static org.osgi.service.component.annotations.ServiceScope.PROTOTYPE;
 public class ConsumerQueueConfiguration implements Implementor {
 
     @Example("true")
-    @DefaultRenameMe("false")
+    @DefaultValue("false")
     @When(propertyName = "queueName", propertyValue = When.NOT_SCRIPT)
     @Property("Create new queue")
     @PropertyDescription("If true, a queue with the name provided in the 'Queue Name' field will be created in the broker. " +
@@ -21,21 +21,21 @@ public class ConsumerQueueConfiguration implements Implementor {
     private Boolean create;
 
     @Example("true")
-    @DefaultRenameMe("false")
+    @DefaultValue("false")
     @When(propertyName = "create", propertyValue = "true")
     @Property("Durable after restart")
     @PropertyDescription("If true the queue will survive a server restart.")
     private Boolean durable;
 
     @Example("true")
-    @DefaultRenameMe("false")
+    @DefaultValue("false")
     @When(propertyName = "create", propertyValue = "true")
     @Property("Exclusive to connection")
     @PropertyDescription("If true the use of the queue will be restricted to this connection.")
     private Boolean exclusive;
 
     @Example("true")
-    @DefaultRenameMe("false")
+    @DefaultValue("false")
     @When(propertyName = "create", propertyValue = "true")
     @Property("Auto Delete")
     @PropertyDescription("If true the server will delete the queue when it is no longer in use.")

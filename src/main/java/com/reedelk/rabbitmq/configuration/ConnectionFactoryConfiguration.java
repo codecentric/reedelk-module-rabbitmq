@@ -13,42 +13,42 @@ public class ConnectionFactoryConfiguration implements Implementor {
 
     @Hint("guest")
     @Example("guest")
-    @DefaultRenameMe("guest")
+    @DefaultValue("guest")
     @Property("Username")
     @PropertyDescription("The AMQP user name to use when connecting to the broker.")
     private String userName;
 
     @Hint("guest")
     @Example("guest")
-    @DefaultRenameMe("guest")
+    @DefaultValue("guest")
     @Property("Password")
     @PropertyDescription("The AMQP password to use when connecting to the broker.")
     private String password;
 
     @Hint("/")
     @Example("/")
-    @DefaultRenameMe("/")
+    @DefaultValue("/")
     @Property("Virtual Host")
     @PropertyDescription("The virtual host to use when connecting to the broker.")
     private String virtualHost;
 
     @Hint("localhost")
     @Example("rabbitmq.domain.com")
-    @DefaultRenameMe("localhost")
+    @DefaultValue("localhost")
     @Property("Host Name")
     @PropertyDescription("The host to use for connections to the broker.")
     private String hostName;
 
     @Hint("5672")
     @Example("5672")
-    @DefaultRenameMe("5672")
+    @DefaultValue("5672")
     @Property("Port Number")
     @PropertyDescription("The port to use for connections to the broker.")
     private Integer portNumber;
 
     @InitValue("true")
     @Example("true")
-    @DefaultRenameMe("false")
+    @DefaultValue("false")
     @Property("Automatic Recovery")
     @PropertyDescription("If true automatic recovery of this connection " +
             "is performed when the network connection with the server fails.")

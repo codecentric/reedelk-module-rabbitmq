@@ -8,9 +8,9 @@
       "componentType": "INBOUND",
       "componentPropertyDescriptors": [
         {
+          "initValue": "###USE_DEFAULT_VALUE###",
           "displayName": "Connection Config",
           "propertyName": "configuration",
-          "initValue": "###USE_DEFAULT_VALUE###",
           "propertyType": {
             "classname": "com.reedelk.module.descriptor.model.TypeObjectDescriptor",
             "instance": {
@@ -20,11 +20,12 @@
               "objectProperties": [
                 {
                   "example": "guest",
+                  "initValue": "###USE_DEFAULT_VALUE###",
                   "hintValue": "guest",
                   "displayName": "Username",
+                  "defaultValue": "guest",
                   "propertyName": "userName",
-                  "initValue": "###USE_DEFAULT_VALUE###",
-                  "propertyInfo": "The AMQP user name to use when connecting to the broker.",
+                  "propertyDescription": "The AMQP user name to use when connecting to the broker.",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -35,11 +36,12 @@
                 },
                 {
                   "example": "guest",
+                  "initValue": "###USE_DEFAULT_VALUE###",
                   "hintValue": "guest",
                   "displayName": "Password",
+                  "defaultValue": "guest",
                   "propertyName": "password",
-                  "initValue": "###USE_DEFAULT_VALUE###",
-                  "propertyInfo": "The AMQP password to use when connecting to the broker.",
+                  "propertyDescription": "The AMQP password to use when connecting to the broker.",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -50,11 +52,12 @@
                 },
                 {
                   "example": "/",
+                  "initValue": "###USE_DEFAULT_VALUE###",
                   "hintValue": "/",
                   "displayName": "Virtual Host",
+                  "defaultValue": "/",
                   "propertyName": "virtualHost",
-                  "initValue": "###USE_DEFAULT_VALUE###",
-                  "propertyInfo": "The virtual host to use when connecting to the broker.",
+                  "propertyDescription": "The virtual host to use when connecting to the broker.",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -65,11 +68,12 @@
                 },
                 {
                   "example": "rabbitmq.domain.com",
+                  "initValue": "###USE_DEFAULT_VALUE###",
                   "hintValue": "localhost",
                   "displayName": "Host Name",
+                  "defaultValue": "localhost",
                   "propertyName": "hostName",
-                  "initValue": "###USE_DEFAULT_VALUE###",
-                  "propertyInfo": "The host to use for connections to the broker.",
+                  "propertyDescription": "The host to use for connections to the broker.",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -80,11 +84,12 @@
                 },
                 {
                   "example": "5672",
+                  "initValue": "###USE_DEFAULT_VALUE###",
                   "hintValue": "5672",
                   "displayName": "Port Number",
+                  "defaultValue": "5672",
                   "propertyName": "portNumber",
-                  "initValue": "###USE_DEFAULT_VALUE###",
-                  "propertyInfo": "The port to use for connections to the broker.",
+                  "propertyDescription": "The port to use for connections to the broker.",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -95,10 +100,11 @@
                 },
                 {
                   "example": "true",
-                  "displayName": "Automatic Recovery",
-                  "propertyName": "automaticRecovery",
                   "initValue": "true",
-                  "propertyInfo": "If true automatic recovery of this connection is performed when the network connection with the server fails.",
+                  "displayName": "Automatic Recovery",
+                  "defaultValue": "false",
+                  "propertyName": "automaticRecovery",
+                  "propertyDescription": "If true automatic recovery of this connection is performed when the network connection with the server fails.",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -115,11 +121,11 @@
         },
         {
           "example": "amqp://guest:guest@localhost:5672",
+          "initValue": "amqp://guest:guest@localhost:5672",
           "hintValue": "amqp://guest:guest@localhost:5672",
           "displayName": "Connection URI",
           "propertyName": "connectionURI",
-          "initValue": "amqp://guest:guest@localhost:5672",
-          "propertyInfo": "Configure a connection using the provided AMQP URI containing the connection data.",
+          "propertyDescription": "Configure a connection using the provided AMQP URI containing the connection data.",
           "propertyType": {
             "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
             "instance": {
@@ -139,11 +145,11 @@
         },
         {
           "example": "queue_inbound",
+          "initValue": "###USE_DEFAULT_VALUE###",
           "hintValue": "queue_inbound",
           "displayName": "Queue Name",
           "propertyName": "queueName",
-          "initValue": "###USE_DEFAULT_VALUE###",
-          "propertyInfo": "Defines the name of the queue this consumer will be consuming messages from.",
+          "propertyDescription": "Defines the name of the queue this consumer will be consuming messages from.",
           "propertyType": {
             "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
             "instance": {
@@ -153,9 +159,9 @@
           "whenDescriptors": []
         },
         {
+          "initValue": "###USE_DEFAULT_VALUE###",
           "displayName": "Queue Settings",
           "propertyName": "queueConfiguration",
-          "initValue": "###USE_DEFAULT_VALUE###",
           "propertyType": {
             "classname": "com.reedelk.module.descriptor.model.TypeObjectDescriptor",
             "instance": {
@@ -165,10 +171,11 @@
               "objectProperties": [
                 {
                   "example": "true",
-                  "displayName": "Create new queue",
-                  "propertyName": "create",
                   "initValue": "###USE_DEFAULT_VALUE###",
-                  "propertyInfo": "If true, a queue with the name provided in the \u0027Queue Name\u0027 field will be created in the broker. If false the queue is considered already defined in the broker and an error will be thrown if the queue does not exists.",
+                  "displayName": "Create new queue",
+                  "defaultValue": "false",
+                  "propertyName": "create",
+                  "propertyDescription": "If true, a queue with the name provided in the \u0027Queue Name\u0027 field will be created in the broker. If false the queue is considered already defined in the broker and an error will be thrown if the queue does not exists.",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -184,10 +191,11 @@
                 },
                 {
                   "example": "true",
+                  "initValue": "###USE_DEFAULT_VALUE###",
                   "displayName": "Durable after restart",
+                  "defaultValue": "false",
                   "propertyName": "durable",
-                  "initValue": "###USE_DEFAULT_VALUE###",
-                  "propertyInfo": "If true the queue will survive a server restart.",
+                  "propertyDescription": "If true the queue will survive a server restart.",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -203,10 +211,11 @@
                 },
                 {
                   "example": "true",
+                  "initValue": "###USE_DEFAULT_VALUE###",
                   "displayName": "Exclusive to connection",
+                  "defaultValue": "false",
                   "propertyName": "exclusive",
-                  "initValue": "###USE_DEFAULT_VALUE###",
-                  "propertyInfo": "If true the use of the queue will be restricted to this connection.",
+                  "propertyDescription": "If true the use of the queue will be restricted to this connection.",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -222,10 +231,11 @@
                 },
                 {
                   "example": "true",
-                  "displayName": "Auto Delete",
-                  "propertyName": "autoDelete",
                   "initValue": "###USE_DEFAULT_VALUE###",
-                  "propertyInfo": "If true the server will delete the queue when it is no longer in use.",
+                  "displayName": "Auto Delete",
+                  "defaultValue": "false",
+                  "propertyName": "autoDelete",
+                  "propertyDescription": "If true the server will delete the queue when it is no longer in use.",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -247,10 +257,11 @@
         },
         {
           "example": "text/plain",
-          "displayName": "Content Mime Type",
-          "propertyName": "messageMimeType",
           "initValue": "text/plain",
-          "propertyInfo": "The Mime Type of the consumed content allows to create a flow message with a suitable content type for the following flow components (e.g a \u0027text/plain\u0027 mime type converts the consumed content to a string, a \u0027application/octet-stream\u0027 keeps the consumed content as byte array).",
+          "displayName": "Content Mime Type",
+          "defaultValue": "application/octet-stream",
+          "propertyName": "messageMimeType",
+          "propertyDescription": "The Mime Type of the consumed content allows to create a flow message with a suitable content type for the following flow components (e.g a \u0027text/plain\u0027 mime type converts the consumed content to a string, a \u0027application/octet-stream\u0027 keeps the consumed content as byte array).",
           "propertyType": {
             "classname": "com.reedelk.module.descriptor.model.TypeComboDescriptor",
             "instance": {
@@ -384,10 +395,11 @@
         },
         {
           "example": "true",
-          "displayName": "Auto Acknowledge",
-          "propertyName": "autoAck",
           "initValue": "true",
-          "propertyInfo": "True to immediately consider messages delivered by the broker as soon as the flow starts. False to acknowledge the message only if the flow executed successfully.",
+          "displayName": "Auto Acknowledge",
+          "defaultValue": "false",
+          "propertyName": "autoAck",
+          "propertyDescription": "True to immediately consider messages delivered by the broker as soon as the flow starts. False to acknowledge the message only if the flow executed successfully.",
           "propertyType": {
             "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
             "instance": {
@@ -406,9 +418,9 @@
       "componentType": "PROCESSOR",
       "componentPropertyDescriptors": [
         {
+          "initValue": "###USE_DEFAULT_VALUE###",
           "displayName": "Connection Config",
           "propertyName": "configuration",
-          "initValue": "###USE_DEFAULT_VALUE###",
           "propertyType": {
             "classname": "com.reedelk.module.descriptor.model.TypeObjectDescriptor",
             "instance": {
@@ -418,11 +430,12 @@
               "objectProperties": [
                 {
                   "example": "guest",
+                  "initValue": "###USE_DEFAULT_VALUE###",
                   "hintValue": "guest",
                   "displayName": "Username",
+                  "defaultValue": "guest",
                   "propertyName": "userName",
-                  "initValue": "###USE_DEFAULT_VALUE###",
-                  "propertyInfo": "The AMQP user name to use when connecting to the broker.",
+                  "propertyDescription": "The AMQP user name to use when connecting to the broker.",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -433,11 +446,12 @@
                 },
                 {
                   "example": "guest",
+                  "initValue": "###USE_DEFAULT_VALUE###",
                   "hintValue": "guest",
                   "displayName": "Password",
+                  "defaultValue": "guest",
                   "propertyName": "password",
-                  "initValue": "###USE_DEFAULT_VALUE###",
-                  "propertyInfo": "The AMQP password to use when connecting to the broker.",
+                  "propertyDescription": "The AMQP password to use when connecting to the broker.",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -448,11 +462,12 @@
                 },
                 {
                   "example": "/",
+                  "initValue": "###USE_DEFAULT_VALUE###",
                   "hintValue": "/",
                   "displayName": "Virtual Host",
+                  "defaultValue": "/",
                   "propertyName": "virtualHost",
-                  "initValue": "###USE_DEFAULT_VALUE###",
-                  "propertyInfo": "The virtual host to use when connecting to the broker.",
+                  "propertyDescription": "The virtual host to use when connecting to the broker.",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -463,11 +478,12 @@
                 },
                 {
                   "example": "rabbitmq.domain.com",
+                  "initValue": "###USE_DEFAULT_VALUE###",
                   "hintValue": "localhost",
                   "displayName": "Host Name",
+                  "defaultValue": "localhost",
                   "propertyName": "hostName",
-                  "initValue": "###USE_DEFAULT_VALUE###",
-                  "propertyInfo": "The host to use for connections to the broker.",
+                  "propertyDescription": "The host to use for connections to the broker.",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -478,11 +494,12 @@
                 },
                 {
                   "example": "5672",
+                  "initValue": "###USE_DEFAULT_VALUE###",
                   "hintValue": "5672",
                   "displayName": "Port Number",
+                  "defaultValue": "5672",
                   "propertyName": "portNumber",
-                  "initValue": "###USE_DEFAULT_VALUE###",
-                  "propertyInfo": "The port to use for connections to the broker.",
+                  "propertyDescription": "The port to use for connections to the broker.",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -493,10 +510,11 @@
                 },
                 {
                   "example": "true",
-                  "displayName": "Automatic Recovery",
-                  "propertyName": "automaticRecovery",
                   "initValue": "true",
-                  "propertyInfo": "If true automatic recovery of this connection is performed when the network connection with the server fails.",
+                  "displayName": "Automatic Recovery",
+                  "defaultValue": "false",
+                  "propertyName": "automaticRecovery",
+                  "propertyDescription": "If true automatic recovery of this connection is performed when the network connection with the server fails.",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -512,11 +530,11 @@
           "whenDescriptors": []
         },
         {
+          "initValue": "amqp://guest:guest@localhost:5672",
           "hintValue": "amqp://guest:guest@localhost:5672",
           "displayName": "Connection URI",
           "propertyName": "connectionURI",
-          "initValue": "amqp://guest:guest@localhost:5672",
-          "propertyInfo": "Configure a connection using the provided AMQP URI containing the connection data.",
+          "propertyDescription": "Configure a connection using the provided AMQP URI containing the connection data.",
           "propertyType": {
             "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
             "instance": {
@@ -535,11 +553,11 @@
           ]
         },
         {
+          "initValue": "###USE_DEFAULT_VALUE###",
           "hintValue": "amq.fanout",
           "displayName": "Exchange Name",
           "propertyName": "exchangeName",
-          "initValue": "###USE_DEFAULT_VALUE###",
-          "propertyInfo": "The name of the exchange to publish the message to. It might be a dynamic property.",
+          "propertyDescription": "The name of the exchange to publish the message to. It might be a dynamic property.",
           "propertyType": {
             "classname": "com.reedelk.module.descriptor.model.TypeDynamicValueDescriptor",
             "instance": {
@@ -549,10 +567,10 @@
           "whenDescriptors": []
         },
         {
+          "initValue": "###USE_DEFAULT_VALUE###",
           "hintValue": "queue_outbound",
           "displayName": "Queue Name",
           "propertyName": "queueName",
-          "initValue": "###USE_DEFAULT_VALUE###",
           "propertyType": {
             "classname": "com.reedelk.module.descriptor.model.TypeDynamicValueDescriptor",
             "instance": {
@@ -562,9 +580,9 @@
           "whenDescriptors": []
         },
         {
+          "initValue": "###USE_DEFAULT_VALUE###",
           "displayName": "Queue Settings",
           "propertyName": "producerQueueConfiguration",
-          "initValue": "###USE_DEFAULT_VALUE###",
           "propertyType": {
             "classname": "com.reedelk.module.descriptor.model.TypeObjectDescriptor",
             "instance": {
@@ -573,10 +591,10 @@
               "typeFullyQualifiedName": "com.reedelk.rabbitmq.configuration.ProducerQueueConfiguration",
               "objectProperties": [
                 {
+                  "initValue": "###USE_DEFAULT_VALUE###",
                   "displayName": "Create new queue",
                   "propertyName": "create",
-                  "initValue": "###USE_DEFAULT_VALUE###",
-                  "propertyInfo": "If true, a queue with the name provided in the \u0027Queue Name\u0027 field will be created in the broker. If false the queue is considered already defined in the broker and an error will be thrown if the queue does not exists (default: false).",
+                  "propertyDescription": "If true, a queue with the name provided in the \u0027Queue Name\u0027 field will be created in the broker. If false the queue is considered already defined in the broker and an error will be thrown if the queue does not exists (default: false).",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -591,10 +609,10 @@
                   ]
                 },
                 {
+                  "initValue": "###USE_DEFAULT_VALUE###",
                   "displayName": "Durable after restart",
                   "propertyName": "durable",
-                  "initValue": "###USE_DEFAULT_VALUE###",
-                  "propertyInfo": "If true the queue will survive a server restart (default: false).",
+                  "propertyDescription": "If true the queue will survive a server restart (default: false).",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -609,10 +627,10 @@
                   ]
                 },
                 {
+                  "initValue": "###USE_DEFAULT_VALUE###",
                   "displayName": "Exclusive to connection",
                   "propertyName": "exclusive",
-                  "initValue": "###USE_DEFAULT_VALUE###",
-                  "propertyInfo": "If true the use of the queue will be restricted to this connection (default: false).",
+                  "propertyDescription": "If true the use of the queue will be restricted to this connection (default: false).",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
@@ -627,10 +645,10 @@
                   ]
                 },
                 {
+                  "initValue": "###USE_DEFAULT_VALUE###",
                   "displayName": "Auto Delete",
                   "propertyName": "autoDelete",
-                  "initValue": "###USE_DEFAULT_VALUE###",
-                  "propertyInfo": "If true the server will delete the queue when it is no longer in use (default: false).",
+                  "propertyDescription": "If true the server will delete the queue when it is no longer in use (default: false).",
                   "propertyType": {
                     "classname": "com.reedelk.module.descriptor.model.TypePrimitiveDescriptor",
                     "instance": {
