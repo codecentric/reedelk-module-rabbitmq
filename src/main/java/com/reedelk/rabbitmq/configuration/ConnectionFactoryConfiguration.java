@@ -11,46 +11,46 @@ import static org.osgi.service.component.annotations.ServiceScope.PROTOTYPE;
 @Component(service = ConnectionFactoryConfiguration.class, scope = PROTOTYPE)
 public class ConnectionFactoryConfiguration implements Implementor {
 
+    @Property("Username")
     @Hint("guest")
     @Example("guest")
     @DefaultValue("guest")
-    @Property("Username")
-    @PropertyDescription("The AMQP user name to use when connecting to the broker.")
+    @Description("The AMQP user name to use when connecting to the broker.")
     private String userName;
 
+    @Property("Password")
     @Hint("guest")
     @Example("guest")
     @DefaultValue("guest")
-    @Property("Password")
-    @PropertyDescription("The AMQP password to use when connecting to the broker.")
+    @Description("The AMQP password to use when connecting to the broker.")
     private String password;
 
+    @Property("Virtual Host")
     @Hint("/")
     @Example("/")
     @DefaultValue("/")
-    @Property("Virtual Host")
-    @PropertyDescription("The virtual host to use when connecting to the broker.")
+    @Description("The virtual host to use when connecting to the broker.")
     private String virtualHost;
 
-    @Hint("localhost")
-    @Example("rabbitmq.domain.com")
-    @DefaultValue("localhost")
     @Property("Host Name")
-    @PropertyDescription("The host to use for connections to the broker.")
+    @Hint("localhost")
+    @DefaultValue("localhost")
+    @Example("rabbitmq.domain.com")
+    @Description("The host to use for connections to the broker.")
     private String hostName;
 
+    @Property("Port Number")
     @Hint("5672")
     @Example("5672")
     @DefaultValue("5672")
-    @Property("Port Number")
-    @PropertyDescription("The port to use for connections to the broker.")
+    @Description("The port to use for connections to the broker.")
     private Integer portNumber;
 
-    @InitValue("true")
-    @Example("true")
-    @DefaultValue("false")
     @Property("Automatic Recovery")
-    @PropertyDescription("If true automatic recovery of this connection " +
+    @Example("true")
+    @InitValue("true")
+    @DefaultValue("false")
+    @Description("If true automatic recovery of this connection " +
             "is performed when the network connection with the server fails.")
     private Boolean automaticRecovery;
 

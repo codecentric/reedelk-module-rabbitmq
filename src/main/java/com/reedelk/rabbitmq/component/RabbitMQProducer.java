@@ -27,9 +27,8 @@ import static java.util.Optional.of;
 import static java.util.Optional.ofNullable;
 import static org.osgi.service.component.annotations.ServiceScope.PROTOTYPE;
 
-@ModuleComponent(
-        name="RabbitMQ Producer",
-        description = "Sends the message payload to a RabbitMQ broker queue. " +
+@ModuleComponent("RabbitMQ Producer")
+@Description("Sends the message payload to a RabbitMQ broker queue. " +
                 "The component might be configured to create " +
                 "the destination queue if it does not exists already.")
 @Component(service = RabbitMQProducer.class, scope = PROTOTYPE)
@@ -39,7 +38,7 @@ public class RabbitMQProducer implements ProcessorSync {
     private ConnectionFactoryConfiguration configuration;
 
     @Property("Connection URI")
-    @PropertyDescription("Configure a connection using the provided AMQP URI " +
+    @Description("Configure a connection using the provided AMQP URI " +
             "containing the connection data.")
     @Hint("amqp://guest:guest@localhost:5672")
     @InitValue("amqp://guest:guest@localhost:5672")
@@ -48,7 +47,7 @@ public class RabbitMQProducer implements ProcessorSync {
     private String connectionURI;
 
     @Property("Exchange Name")
-    @PropertyDescription("The name of the exchange to publish the message to. It might be a dynamic property.")
+    @Description("The name of the exchange to publish the message to. It might be a dynamic property.")
     @Hint("amq.fanout")
     private DynamicString exchangeName;
 

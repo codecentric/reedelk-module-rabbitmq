@@ -11,34 +11,34 @@ import static org.osgi.service.component.annotations.ServiceScope.PROTOTYPE;
 @Component(service = ConsumerQueueConfiguration.class, scope = PROTOTYPE)
 public class ConsumerQueueConfiguration implements Implementor {
 
+    @Property("Create new queue")
     @Example("true")
     @DefaultValue("false")
     @When(propertyName = "queueName", propertyValue = When.NOT_SCRIPT)
-    @Property("Create new queue")
-    @PropertyDescription("If true, a queue with the name provided in the 'Queue Name' field will be created in the broker. " +
+    @Description("If true, a queue with the name provided in the 'Queue Name' field will be created in the broker. " +
             "If false the queue is considered already defined in the broker and an error will be thrown if the" +
             " queue does not exists.")
     private Boolean create;
 
+    @Property("Durable after restart")
     @Example("true")
     @DefaultValue("false")
     @When(propertyName = "create", propertyValue = "true")
-    @Property("Durable after restart")
-    @PropertyDescription("If true the queue will survive a server restart.")
+    @Description("If true the queue will survive a server restart.")
     private Boolean durable;
 
+    @Property("Exclusive to connection")
     @Example("true")
     @DefaultValue("false")
     @When(propertyName = "create", propertyValue = "true")
-    @Property("Exclusive to connection")
-    @PropertyDescription("If true the use of the queue will be restricted to this connection.")
+    @Description("If true the use of the queue will be restricted to this connection.")
     private Boolean exclusive;
 
+    @Property("Auto Delete")
     @Example("true")
     @DefaultValue("false")
     @When(propertyName = "create", propertyValue = "true")
-    @Property("Auto Delete")
-    @PropertyDescription("If true the server will delete the queue when it is no longer in use.")
+    @Description("If true the server will delete the queue when it is no longer in use.")
     private Boolean autoDelete;
 
     public void setDurable(Boolean durable) {
