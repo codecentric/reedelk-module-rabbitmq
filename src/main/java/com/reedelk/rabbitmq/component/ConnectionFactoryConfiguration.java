@@ -1,4 +1,4 @@
-package com.reedelk.rabbitmq.configuration;
+package com.reedelk.rabbitmq.component;
 
 import com.reedelk.runtime.api.annotation.*;
 import com.reedelk.runtime.api.component.Implementor;

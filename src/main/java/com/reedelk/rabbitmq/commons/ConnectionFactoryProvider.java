@@ -2,7 +2,7 @@ package com.reedelk.rabbitmq.commons;
 
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
-import com.reedelk.rabbitmq.configuration.ConnectionFactoryConfiguration;
+import com.reedelk.rabbitmq.component.ConnectionFactoryConfiguration;
 import com.reedelk.runtime.api.exception.ESBException;
 
 import java.io.IOException;
@@ -11,7 +11,7 @@ import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.util.concurrent.TimeoutException;
 
-import static com.reedelk.rabbitmq.configuration.ConnectionFactoryConfiguration.*;
+import static com.reedelk.rabbitmq.component.ConnectionFactoryConfiguration.*;
 
 public class ConnectionFactoryProvider {
 

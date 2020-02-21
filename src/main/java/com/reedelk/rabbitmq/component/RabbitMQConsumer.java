@@ -3,8 +3,6 @@ package com.reedelk.rabbitmq.component;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.reedelk.rabbitmq.commons.*;
-import com.reedelk.rabbitmq.configuration.ConnectionFactoryConfiguration;
-import com.reedelk.rabbitmq.configuration.ConsumerQueueConfiguration;
 import com.reedelk.runtime.api.annotation.*;
 import com.reedelk.runtime.api.component.AbstractInbound;
 import com.reedelk.runtime.api.exception.ESBException;
@@ -47,7 +45,7 @@ public class RabbitMQConsumer extends AbstractInbound {
     private String queueName;
 
     @Property("Queue Settings")
-    private ConsumerQueueConfiguration queueConfiguration;
+    private RabbitMQConsumerQueueConfiguration queueConfiguration;
 
     @Property("Content Mime Type")
     @MimeTypeCombo
@@ -118,7 +116,7 @@ public class RabbitMQConsumer extends AbstractInbound {
         this.messageMimeType = messageMimeType;
     }
 
-    public void setQueueConfiguration(ConsumerQueueConfiguration queueConfiguration) {
+    public void setQueueConfiguration(RabbitMQConsumerQueueConfiguration queueConfiguration) {
         this.queueConfiguration = queueConfiguration;
     }
 
@@ -133,16 +131,16 @@ public class RabbitMQConsumer extends AbstractInbound {
     private boolean shouldDeclareQueue() {
         return ofNullable(queueConfiguration)
                 .flatMap(queueConfiguration ->
-                        of(ConsumerQueueConfiguration.isCreateNew(queueConfiguration)))
+                        of(RabbitMQConsumerQueueConfiguration.isCreateNew(queueConfiguration)))
                 .orElse(false);
     }
 
     private void createQueueIfNeeded() throws IOException {
         boolean shouldDeclareQueue = shouldDeclareQueue();
         if (shouldDeclareQueue) {
-            boolean durable = ConsumerQueueConfiguration.isDurable(queueConfiguration);
-            boolean exclusive = ConsumerQueueConfiguration.isExclusive(queueConfiguration);
-            boolean autoDelete = ConsumerQueueConfiguration.isAutoDelete(queueConfiguration);
+            boolean durable = RabbitMQConsumerQueueConfiguration.isDurable(queueConfiguration);
+            boolean exclusive = RabbitMQConsumerQueueConfiguration.isExclusive(queueConfiguration);
+            boolean autoDelete = RabbitMQConsumerQueueConfiguration.isAutoDelete(queueConfiguration);
             channel.queueDeclare(queueName, durable, exclusive, autoDelete, null);
         }
     }

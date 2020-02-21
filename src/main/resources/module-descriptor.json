@@ -16,7 +16,7 @@
             "instance": {
               "shared": "YES",
               "collapsible": "NO",
-              "typeFullyQualifiedName": "com.reedelk.rabbitmq.configuration.ConnectionFactoryConfiguration",
+              "typeFullyQualifiedName": "com.reedelk.rabbitmq.component.ConnectionFactoryConfiguration",
               "objectProperties": [
                 {
                   "name": "userName",
@@ -167,7 +167,7 @@
             "instance": {
               "shared": "NO",
               "collapsible": "YES",
-              "typeFullyQualifiedName": "com.reedelk.rabbitmq.configuration.ConsumerQueueConfiguration",
+              "typeFullyQualifiedName": "com.reedelk.rabbitmq.component.RabbitMQConsumerQueueConfiguration",
               "objectProperties": [
                 {
                   "name": "create",
@@ -426,7 +426,7 @@
             "instance": {
               "shared": "YES",
               "collapsible": "NO",
-              "typeFullyQualifiedName": "com.reedelk.rabbitmq.configuration.ConnectionFactoryConfiguration",
+              "typeFullyQualifiedName": "com.reedelk.rabbitmq.component.ConnectionFactoryConfiguration",
               "objectProperties": [
                 {
                   "name": "userName",
@@ -588,7 +588,7 @@
             "instance": {
               "shared": "NO",
               "collapsible": "YES",
-              "typeFullyQualifiedName": "com.reedelk.rabbitmq.configuration.ProducerQueueConfiguration",
+              "typeFullyQualifiedName": "com.reedelk.rabbitmq.component.RabbitMQProducerQueueConfiguration",
               "objectProperties": [
                 {
                   "name": "create",
