@@ -2,6 +2,6 @@
   {
     "version": "0.9.1-SNAPHSOT",
     "date": "6/3/2020",
-    "release-notes": "<ul><li>Bugfix: fixed null pointer exception in RabbitMQ Producer when queue name is null.</li><li>Bugfix: fixed RabbitMQConsumer to automatically convert payload body from provided mime type.</li></ul>",
+    "release-notes": "<ul><li>Bugfix: fixed null pointer exception in RabbitMQ Producer when queue name is null.</li><li>Bugfix: fixed RabbitMQConsumer to automatically convert payload body from provided mime type.</li></ul>"
   }
 ]
