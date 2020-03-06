@@ -5,6 +5,7 @@ import com.rabbitmq.client.DeliverCallback;
 import com.rabbitmq.client.Delivery;
 import com.rabbitmq.client.Envelope;
 import com.reedelk.rabbitmq.component.RabbitMQConsumer;
+import com.reedelk.runtime.api.commons.JavaType;
 import com.reedelk.runtime.api.message.*;
 import com.reedelk.runtime.api.message.content.MimeType;
 
@@ -29,13 +30,23 @@ abstract class ConsumerDeliverCallback implements DeliverCallback {
         byte[] content = delivery.getBody();
 
         // Message Attributes
-        MessageAttributes messageAttributes = createAttributes(delivery);
+        MessageAttributes attributes = createAttributes(delivery);
 
-        // Build Message
-        Message inboundMessage = MessageBuilder.get()
-                .withBinary(content, consumedMessageMimeType)
-                .attributes(messageAttributes)
-                .build();
+        Message inboundMessage;
+
+        // Convert the payload to a suitable type according to the mime type.
+        if (String.class == JavaType.from(consumedMessageMimeType)) {
+
+            inboundMessage = MessageBuilder.get()
+                    .withString(new String(content), consumedMessageMimeType)
+                    .attributes(attributes)
+                    .build();
+        } else {
+            inboundMessage = MessageBuilder.get()
+                    .withBinary(content, consumedMessageMimeType)
+                    .attributes(attributes)
+                    .build();
+        }
 
         // Notify event
         onEvent(inboundMessage, delivery);

@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.util.UUID;
 
 import static com.reedelk.runtime.api.commons.ConfigurationPreconditions.requireNotBlank;
+import static com.reedelk.runtime.api.commons.ConfigurationPreconditions.requireNotNull;
 import static java.util.Optional.of;
 import static java.util.Optional.ofNullable;
 import static org.osgi.service.component.annotations.ServiceScope.PROTOTYPE;
@@ -93,6 +94,8 @@ public class RabbitMQProducer implements ProcessorSync {
 
     @Override
     public void initialize() {
+        requireNotNull(RabbitMQProducer.class, queueName, "Queue Name must not be null");
+        requireNotBlank(RabbitMQProducer.class, queueName.value(), "Queue Name must not be empty");
         if (configuration == null) {
             requireNotBlank(RabbitMQProducer.class, connectionURI, "Connection URI must not be empty");
             connection = ConnectionFactoryProvider.from(connectionURI);
