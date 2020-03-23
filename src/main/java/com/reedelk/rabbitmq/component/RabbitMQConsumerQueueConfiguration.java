@@ -14,7 +14,6 @@ public class RabbitMQConsumerQueueConfiguration implements Implementor {
     @Property("Create new queue")
     @Example("true")
     @DefaultValue("false")
-    @When(propertyName = "queueName", propertyValue = When.NOT_SCRIPT)
     @Description("If true, a queue with the name provided in the 'Queue Name' field will be created in the broker. " +
             "If false the queue is considered already defined in the broker and an error will be thrown if the" +
             " queue does not exists.")

@@ -54,9 +54,10 @@ public class RabbitMQProducer implements ProcessorSync {
     @Hint("queue_outbound")
     private DynamicString queueName;
 
-    @Property("Queue Settings")
+    @Property("Queue Configuration")
+    @Group("Queue Configuration")
     @When(propertyName = "queueName", propertyValue = When.NOT_SCRIPT)
-    private RabbitMQProducerQueueConfiguration producerQueueConfiguration;
+    private RabbitMQProducerQueueConfiguration queueConfiguration;
 
     @Reference
     private ConverterService converter;
@@ -132,12 +133,12 @@ public class RabbitMQProducer implements ProcessorSync {
         this.exchangeName = exchangeName;
     }
 
-    public void setProducerQueueConfiguration(RabbitMQProducerQueueConfiguration producerQueueConfiguration) {
-        this.producerQueueConfiguration = producerQueueConfiguration;
+    public void setQueueConfiguration(RabbitMQProducerQueueConfiguration queueConfiguration) {
+        this.queueConfiguration = queueConfiguration;
     }
 
     private boolean shouldDeclareQueue() {
-        return ofNullable(producerQueueConfiguration)
+        return ofNullable(queueConfiguration)
                 .flatMap(producerQueueConfiguration ->
                         of(RabbitMQProducerQueueConfiguration.isCreateNew(producerQueueConfiguration)))
                 .orElse(false);
@@ -157,9 +158,9 @@ public class RabbitMQProducer implements ProcessorSync {
 
         boolean shouldDeclareQueue = shouldDeclareQueue();
         if (shouldDeclareQueue) {
-            boolean durable = RabbitMQProducerQueueConfiguration.isDurable(producerQueueConfiguration);
-            boolean exclusive = RabbitMQProducerQueueConfiguration.isExclusive(producerQueueConfiguration);
-            boolean autoDelete = RabbitMQProducerQueueConfiguration.isAutoDelete(producerQueueConfiguration);
+            boolean durable = RabbitMQProducerQueueConfiguration.isDurable(queueConfiguration);
+            boolean exclusive = RabbitMQProducerQueueConfiguration.isExclusive(queueConfiguration);
+            boolean autoDelete = RabbitMQProducerQueueConfiguration.isAutoDelete(queueConfiguration);
             channel.queueDeclare(queueName.value(), durable, exclusive, autoDelete, null);
         }
     }

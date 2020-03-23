@@ -44,7 +44,8 @@ public class RabbitMQConsumer extends AbstractInbound {
     @Description("Defines the name of the queue this consumer will be consuming messages from.")
     private String queueName;
 
-    @Property("Queue Settings")
+    @Property("Queue Configuration")
+    @Group("Queue Configuration")
     private RabbitMQConsumerQueueConfiguration queueConfiguration;
 
     @Property("Content Mime Type")
