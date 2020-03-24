@@ -1,5 +1,6 @@
 package com.reedelk.rabbitmq.component;
 
+import com.reedelk.runtime.api.annotation.Collapsible;
 import com.reedelk.runtime.api.annotation.Description;
 import com.reedelk.runtime.api.annotation.Property;
 import com.reedelk.runtime.api.annotation.When;
@@ -9,6 +10,7 @@ import org.osgi.service.component.annotations.Component;
 import static java.util.Optional.ofNullable;
 import static org.osgi.service.component.annotations.ServiceScope.PROTOTYPE;
 
+@Collapsible
 @Component(service = RabbitMQProducerQueueConfiguration.class, scope = PROTOTYPE)
 public class RabbitMQProducerQueueConfiguration implements Implementor {
 
