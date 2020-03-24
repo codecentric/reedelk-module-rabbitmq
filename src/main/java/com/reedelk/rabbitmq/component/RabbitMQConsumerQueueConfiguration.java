@@ -7,7 +7,6 @@ import org.osgi.service.component.annotations.Component;
 import static java.util.Optional.ofNullable;
 import static org.osgi.service.component.annotations.ServiceScope.PROTOTYPE;
 
-@Collapsible
 @Component(service = RabbitMQConsumerQueueConfiguration.class, scope = PROTOTYPE)
 public class RabbitMQConsumerQueueConfiguration implements Implementor {
 
