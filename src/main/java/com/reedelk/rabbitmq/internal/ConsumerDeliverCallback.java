@@ -1,4 +1,4 @@
-package com.reedelk.rabbitmq.commons;
+package com.reedelk.rabbitmq.internal;
 
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.DeliverCallback;

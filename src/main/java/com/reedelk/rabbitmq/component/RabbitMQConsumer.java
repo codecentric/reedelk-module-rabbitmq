@@ -2,7 +2,7 @@ package com.reedelk.rabbitmq.component;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
-import com.reedelk.rabbitmq.commons.*;
+import com.reedelk.rabbitmq.internal.*;
 import com.reedelk.runtime.api.annotation.*;
 import com.reedelk.runtime.api.component.AbstractInbound;
 import com.reedelk.runtime.api.exception.ESBException;
