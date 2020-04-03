@@ -51,9 +51,8 @@ public class RabbitMQConsumer extends AbstractInbound {
 
     @Property("Content Mime Type")
     @MimeTypeCombo
-    @Example(MimeType.MIME_TYPE_TEXT_PLAIN)
-    @InitValue(MimeType.MIME_TYPE_TEXT_PLAIN)
-    @DefaultValue(MimeType.MIME_TYPE_APPLICATION_BINARY)
+    @DefaultValue(MimeType.MIME_TYPE_TEXT_PLAIN)
+    @Example(MimeType.MIME_TYPE_APPLICATION_BINARY)
     @Description("The Mime Type of the consumed content allows to create " +
             "a flow message with a suitable content type for the following flow components " +
             "(e.g a 'text/plain' mime type converts the consumed content to a string, " +
@@ -84,7 +83,7 @@ public class RabbitMQConsumer extends AbstractInbound {
         try {
             channel = connection.createChannel();
             createQueueIfNeeded();
-            MimeType queueMessageContentType = MimeType.parse(messageMimeType, MimeType.APPLICATION_BINARY);
+            MimeType queueMessageContentType = MimeType.parse(messageMimeType, MimeType.TEXT_PLAIN);
             if (autoAck) {
                 channel.basicConsume(queueName, true,
                         new ConsumerDeliverCallbackAutoAck( this, queueMessageContentType),
