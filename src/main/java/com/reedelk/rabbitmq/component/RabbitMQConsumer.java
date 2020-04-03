@@ -51,8 +51,8 @@ public class RabbitMQConsumer extends AbstractInbound {
 
     @Property("Content Mime Type")
     @MimeTypeCombo
-    @DefaultValue(MimeType.MIME_TYPE_TEXT_PLAIN)
-    @Example(MimeType.MIME_TYPE_APPLICATION_BINARY)
+    @DefaultValue(MimeType.AsString.TEXT_PLAIN)
+    @Example(MimeType.AsString.APPLICATION_BINARY)
     @Description("The Mime Type of the consumed content allows to create " +
             "a flow message with a suitable content type for the following flow components " +
             "(e.g a 'text/plain' mime type converts the consumed content to a string, " +
