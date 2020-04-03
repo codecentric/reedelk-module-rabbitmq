@@ -33,6 +33,7 @@ import static org.osgi.service.component.annotations.ServiceScope.PROTOTYPE;
 @Component(service = RabbitMQProducer.class, scope = PROTOTYPE)
 public class RabbitMQProducer implements ProcessorSync {
 
+    @DialogTitle("RabbitMQ Connection Factory")
     @Property("Connection Config")
     private ConnectionFactoryConfiguration configuration;
 

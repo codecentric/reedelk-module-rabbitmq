@@ -25,6 +25,7 @@ import static org.osgi.service.component.annotations.ServiceScope.PROTOTYPE;
 @Component(service = RabbitMQConsumer.class, scope = PROTOTYPE)
 public class RabbitMQConsumer extends AbstractInbound {
 
+    @DialogTitle("RabbitMQ Connection Factory")
     @Property("Connection Config")
     private ConnectionFactoryConfiguration configuration;
 
