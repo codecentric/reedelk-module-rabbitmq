@@ -9,7 +9,7 @@ import com.reedelk.runtime.api.annotation.*;
 import com.reedelk.runtime.api.commons.StringUtils;
 import com.reedelk.runtime.api.component.ProcessorSync;
 import com.reedelk.runtime.api.converter.ConverterService;
-import com.reedelk.runtime.api.exception.ESBException;
+import com.reedelk.runtime.api.exception.PlatformException;
 import com.reedelk.runtime.api.flow.FlowContext;
 import com.reedelk.runtime.api.message.Message;
 import com.reedelk.runtime.api.script.ScriptEngineService;
@@ -71,7 +71,7 @@ public class RabbitMQProducer implements ProcessorSync {
     public Message apply(FlowContext flowContext, Message message) {
 
         String queueName = scriptEngine.evaluate(this.queueName, flowContext, message)
-                .orElseThrow(() -> new ESBException("Queue name not found"));
+                .orElseThrow(() -> new PlatformException("Queue name not found"));
 
         String exchangeName = scriptEngine.evaluate(this.exchangeName, flowContext, message)
                 .orElse(StringUtils.EMPTY);
@@ -88,8 +88,8 @@ public class RabbitMQProducer implements ProcessorSync {
                 channel.basicPublish(exchangeName, queueName, messageProperties, payloadAsBytes);
                 return message;
             }
-        } catch (IOException e) {
-            throw new ESBException(e);
+        } catch (IOException exception) {
+            throw new PlatformException(exception);
         }
     }
 
@@ -106,8 +106,8 @@ public class RabbitMQProducer implements ProcessorSync {
         try {
             channel = connection.createChannel();
             createQueueIfNeeded();
-        } catch (IOException e) {
-            throw new ESBException(e);
+        } catch (IOException exception) {
+            throw new PlatformException(exception);
         }
     }
 

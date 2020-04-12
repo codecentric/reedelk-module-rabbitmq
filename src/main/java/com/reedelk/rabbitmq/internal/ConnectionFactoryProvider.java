@@ -3,7 +3,7 @@ package com.reedelk.rabbitmq.internal;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.reedelk.rabbitmq.component.ConnectionFactoryConfiguration;
-import com.reedelk.runtime.api.exception.ESBException;
+import com.reedelk.runtime.api.exception.PlatformException;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -24,8 +24,8 @@ public class ConnectionFactoryProvider {
                 TimeoutException |
                 NoSuchAlgorithmException |
                 KeyManagementException |
-                URISyntaxException e) {
-            throw new ESBException(e);
+                URISyntaxException exception) {
+            throw new PlatformException(exception);
         }
     }
 
@@ -40,7 +40,7 @@ public class ConnectionFactoryProvider {
             factory.setAutomaticRecoveryEnabled(isAutomaticRecovery(configuration));
             return factory.newConnection();
         } catch (IOException | TimeoutException e) {
-            throw new ESBException(e);
+            throw new PlatformException(e);
         }
     }
 }

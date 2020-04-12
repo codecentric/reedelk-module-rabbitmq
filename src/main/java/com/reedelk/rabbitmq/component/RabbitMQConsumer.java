@@ -5,7 +5,7 @@ import com.rabbitmq.client.Connection;
 import com.reedelk.rabbitmq.internal.*;
 import com.reedelk.runtime.api.annotation.*;
 import com.reedelk.runtime.api.component.AbstractInbound;
-import com.reedelk.runtime.api.exception.ESBException;
+import com.reedelk.runtime.api.exception.PlatformException;
 import com.reedelk.runtime.api.message.content.MimeType;
 import org.osgi.service.component.annotations.Component;
 
@@ -94,8 +94,8 @@ public class RabbitMQConsumer extends AbstractInbound {
                         new ConsumerCancelCallback());
             }
 
-        } catch (IOException e) {
-            throw new ESBException(e);
+        } catch (IOException exception) {
+            throw new PlatformException(exception);
         }
     }
 
