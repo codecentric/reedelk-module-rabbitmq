@@ -2,7 +2,7 @@ package com.reedelk.rabbitmq.internal;
 
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
-import com.reedelk.rabbitmq.component.ConnectionFactoryConfiguration;
+import com.reedelk.rabbitmq.component.ConnectionConfiguration;
 import com.reedelk.runtime.api.exception.PlatformException;
 
 import java.io.IOException;
@@ -11,7 +11,7 @@ import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.util.concurrent.TimeoutException;
 
-import static com.reedelk.rabbitmq.component.ConnectionFactoryConfiguration.*;
+import static com.reedelk.rabbitmq.component.ConnectionConfiguration.*;
 
 public class ConnectionFactoryProvider {
 
@@ -29,7 +29,7 @@ public class ConnectionFactoryProvider {
         }
     }
 
-    public static Connection from(ConnectionFactoryConfiguration configuration) {
+    public static Connection from(ConnectionConfiguration configuration) {
         ConnectionFactory factory = new ConnectionFactory();
         try {
             factory.setUsername(userName(configuration));

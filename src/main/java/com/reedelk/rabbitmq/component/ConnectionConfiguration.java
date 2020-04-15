@@ -8,8 +8,8 @@ import static java.util.Optional.ofNullable;
 import static org.osgi.service.component.annotations.ServiceScope.PROTOTYPE;
 
 @Shared
-@Component(service = ConnectionFactoryConfiguration.class, scope = PROTOTYPE)
-public class ConnectionFactoryConfiguration implements Implementor {
+@Component(service = ConnectionConfiguration.class, scope = PROTOTYPE)
+public class ConnectionConfiguration implements Implementor {
 
     @Property("Username")
     @Hint("guest")
@@ -78,37 +78,37 @@ public class ConnectionFactoryConfiguration implements Implementor {
         this.automaticRecovery = automaticRecovery;
     }
 
-    public static String userName(ConnectionFactoryConfiguration configuration) {
+    public static String userName(ConnectionConfiguration configuration) {
         return ofNullable(configuration)
                 .flatMap(config -> ofNullable(config.userName))
                 .orElse("guest");
     }
 
-    public static String password(ConnectionFactoryConfiguration configuration) {
+    public static String password(ConnectionConfiguration configuration) {
         return ofNullable(configuration)
                 .flatMap(config -> ofNullable(config.password))
                 .orElse("guest");
     }
 
-    public static String virtualHost(ConnectionFactoryConfiguration configuration) {
+    public static String virtualHost(ConnectionConfiguration configuration) {
         return ofNullable(configuration)
                 .flatMap(config -> ofNullable(config.virtualHost))
                 .orElse("/");
     }
 
-    public static String hostName(ConnectionFactoryConfiguration configuration) {
+    public static String hostName(ConnectionConfiguration configuration) {
         return ofNullable(configuration)
                 .flatMap(config -> ofNullable(config.hostName))
                 .orElse("localhost");
     }
 
-    public static int port(ConnectionFactoryConfiguration configuration) {
+    public static int port(ConnectionConfiguration configuration) {
         return ofNullable(configuration)
                 .flatMap(config -> ofNullable(config.portNumber))
                 .orElse(5672);
     }
 
-    public static boolean isAutomaticRecovery(ConnectionFactoryConfiguration configuration) {
+    public static boolean isAutomaticRecovery(ConnectionConfiguration configuration) {
         return ofNullable(configuration)
                 .flatMap(config -> ofNullable(config.automaticRecovery))
                 .orElse(false);

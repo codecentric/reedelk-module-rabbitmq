@@ -35,7 +35,7 @@ public class RabbitMQProducer implements ProcessorSync {
 
     @DialogTitle("RabbitMQ Connection Factory")
     @Property("Connection Config")
-    private ConnectionFactoryConfiguration configuration;
+    private ConnectionConfiguration configuration;
 
     @Property("Connection URI")
     @Description("Configure a connection using the provided AMQP URI " +
@@ -117,7 +117,7 @@ public class RabbitMQProducer implements ProcessorSync {
         ChannelUtils.closeSilently(connection);
     }
 
-    public void setConfiguration(ConnectionFactoryConfiguration configuration) {
+    public void setConfiguration(ConnectionConfiguration configuration) {
         this.configuration = configuration;
     }
 

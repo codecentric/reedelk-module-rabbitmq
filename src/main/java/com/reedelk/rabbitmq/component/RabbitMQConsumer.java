@@ -27,7 +27,7 @@ public class RabbitMQConsumer extends AbstractInbound {
 
     @DialogTitle("RabbitMQ Connection Factory")
     @Property("Connection Config")
-    private ConnectionFactoryConfiguration configuration;
+    private ConnectionConfiguration configuration;
 
     @Property("Connection URI")
     @Hint("amqp://guest:guest@localhost:5672")
@@ -105,7 +105,7 @@ public class RabbitMQConsumer extends AbstractInbound {
         ChannelUtils.closeSilently(connection);
     }
 
-    public void setConfiguration(ConnectionFactoryConfiguration configuration) {
+    public void setConfiguration(ConnectionConfiguration configuration) {
         this.configuration = configuration;
     }
 
