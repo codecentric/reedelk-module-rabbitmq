@@ -5,11 +5,11 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.reedelk.rabbitmq.internal.ChannelUtils;
 import com.reedelk.rabbitmq.internal.ConnectionFactoryProvider;
+import com.reedelk.rabbitmq.internal.exception.RabbitMQProducerException;
 import com.reedelk.runtime.api.annotation.*;
 import com.reedelk.runtime.api.commons.StringUtils;
 import com.reedelk.runtime.api.component.ProcessorSync;
 import com.reedelk.runtime.api.converter.ConverterService;
-import com.reedelk.runtime.api.exception.PlatformException;
 import com.reedelk.runtime.api.flow.FlowContext;
 import com.reedelk.runtime.api.message.Message;
 import com.reedelk.runtime.api.script.ScriptEngineService;
@@ -20,6 +20,7 @@ import org.osgi.service.component.annotations.Reference;
 import java.io.IOException;
 import java.util.UUID;
 
+import static com.reedelk.rabbitmq.internal.commons.Messages.RabbitMQProducer.*;
 import static com.reedelk.runtime.api.commons.ConfigurationPreconditions.requireNotBlank;
 import static com.reedelk.runtime.api.commons.ConfigurationPreconditions.requireNotNull;
 import static java.util.Optional.of;
@@ -70,10 +71,10 @@ public class RabbitMQProducer implements ProcessorSync {
     @Override
     public Message apply(FlowContext flowContext, Message message) {
 
-        String queueName = scriptEngine.evaluate(this.queueName, flowContext, message)
-                .orElseThrow(() -> new PlatformException("Queue name not found"));
+        String evaluatedQueueName = scriptEngine.evaluate(queueName, flowContext, message)
+                .orElseThrow(() -> new RabbitMQProducerException(QUEUE_EMPTY_ERROR.format(queueName.value())));
 
-        String exchangeName = scriptEngine.evaluate(this.exchangeName, flowContext, message)
+        String evaluatedExchangeName = scriptEngine.evaluate(exchangeName, flowContext, message)
                 .orElse(StringUtils.EMPTY);
 
         Object payload = message.payload();
@@ -85,11 +86,12 @@ public class RabbitMQProducer implements ProcessorSync {
             synchronized (this) {
                 // Only one Thread should publish data, otherwise we might have
                 // out of order arrivals.
-                channel.basicPublish(exchangeName, queueName, messageProperties, payloadAsBytes);
+                channel.basicPublish(evaluatedExchangeName, evaluatedQueueName, messageProperties, payloadAsBytes);
                 return message;
             }
         } catch (IOException exception) {
-            throw new PlatformException(exception);
+            String error = PUBLISH_MESSAGE_ERROR.format(evaluatedQueueName);
+            throw new RabbitMQProducerException(error, exception);
         }
     }
 
@@ -107,7 +109,8 @@ public class RabbitMQProducer implements ProcessorSync {
             channel = connection.createChannel();
             createQueueIfNeeded();
         } catch (IOException exception) {
-            throw new PlatformException(exception);
+            String message = CREATE_CHANNEL_ERROR.format(exception.getMessage());
+            throw new RabbitMQProducerException(message, exception);
         }
     }
 
