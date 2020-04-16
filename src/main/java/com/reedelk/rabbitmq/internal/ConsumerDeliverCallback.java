@@ -5,7 +5,9 @@ import com.rabbitmq.client.DeliverCallback;
 import com.rabbitmq.client.Delivery;
 import com.rabbitmq.client.Envelope;
 import com.reedelk.rabbitmq.component.RabbitMQConsumer;
-import com.reedelk.runtime.api.message.*;
+import com.reedelk.runtime.api.message.Message;
+import com.reedelk.runtime.api.message.MessageAttributeKey;
+import com.reedelk.runtime.api.message.MessageBuilder;
 import com.reedelk.runtime.api.message.content.MimeType;
 
 import java.io.Serializable;
@@ -29,19 +31,19 @@ abstract class ConsumerDeliverCallback implements DeliverCallback {
         byte[] content = delivery.getBody();
 
         // Message Attributes
-        MessageAttributes attributes = createAttributes(delivery);
+        Map<String, Serializable> attributes = createAttributes(delivery);
 
         Message inboundMessage;
 
         // Convert the payload to a suitable type according to the mime type.
         if (String.class == consumedMessageMimeType.javaType()) {
 
-            inboundMessage = MessageBuilder.get()
+            inboundMessage = MessageBuilder.get(RabbitMQConsumer.class)
                     .withString(new String(content), consumedMessageMimeType)
                     .attributes(attributes)
                     .build();
         } else {
-            inboundMessage = MessageBuilder.get()
+            inboundMessage = MessageBuilder.get(RabbitMQConsumer.class)
                     .withBinary(content, consumedMessageMimeType)
                     .attributes(attributes)
                     .build();
@@ -53,7 +55,7 @@ abstract class ConsumerDeliverCallback implements DeliverCallback {
 
     protected abstract void onEvent(Message message, Delivery delivery);
 
-    private MessageAttributes createAttributes(Delivery delivery) {
+    private Map<String, Serializable> createAttributes(Delivery delivery) {
         Envelope envelope = delivery.getEnvelope();
         HashMap<String, Serializable> envelopeAttrs = new HashMap<>();
         setIfNotNull(RabbitMQConsumerAttribute.Envelope.deliveryTag(), envelope.getDeliveryTag(), envelopeAttrs);
@@ -91,7 +93,7 @@ abstract class ConsumerDeliverCallback implements DeliverCallback {
                     propertiesAttrs.get(RabbitMQConsumerAttribute.Properties.correlationId()));
         }
 
-        return new DefaultMessageAttributes(RabbitMQConsumer.class, attributes);
+        return attributes;
     }
 
     private void setIfNotNull(String key, Serializable value, Map<String, Serializable> map) {
