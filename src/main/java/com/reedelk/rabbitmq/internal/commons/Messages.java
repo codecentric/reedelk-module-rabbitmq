@@ -24,4 +24,20 @@ public class Messages {
             return message;
         }
     }
+
+    public enum RabbitMQConsumer implements FormattedMessage {
+
+        CONSUME_ERROR("An error occurred while consuming message from queue=[%s], cause=[%s].");
+
+        private final String message;
+
+        RabbitMQConsumer(String message) {
+            this.message = message;
+        }
+
+        @Override
+        public String template() {
+            return message;
+        }
+    }
 }
