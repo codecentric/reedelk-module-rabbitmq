@@ -16,8 +16,9 @@
 
     <properties>
         <maven.compiler.release>8</maven.compiler.release>
-        <rabbitmq.version>5.8.0</rabbitmq.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <rabbitmq.version>5.8.0</rabbitmq.version>
+        <jacoco.version>0.8.2</jacoco.version>
     </properties>
 
     <dependencies>
@@ -27,4 +28,49 @@
             <version>${rabbitmq.version}</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Copy the artifact into the runtime/modules directory -->
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <configuration>
+                    <tasks>
+                        <copy file="target/${project.artifactId}-${project.version}.jar"
+                              tofile="../runtime/runtime-launcher/modules/${project.artifactId}-${project.version}.jar">
+                        </copy>
+                    </tasks>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- JaCoCo test coverage -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>generate-code-coverage-report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
