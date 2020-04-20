@@ -27,7 +27,7 @@ import static org.osgi.service.component.annotations.ServiceScope.PROTOTYPE;
 public class RabbitMQConsumer extends AbstractInbound {
 
     @DialogTitle("RabbitMQ Connection Factory")
-    @Property("Connection Config")
+    @Property("Connection")
     private ConnectionConfiguration configuration;
 
     @Property("Connection URI")
