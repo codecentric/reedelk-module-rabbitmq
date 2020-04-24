@@ -21,8 +21,8 @@ import java.io.IOException;
 import java.util.UUID;
 
 import static com.reedelk.rabbitmq.internal.commons.Messages.RabbitMQProducer.*;
-import static com.reedelk.runtime.api.commons.ConfigurationPreconditions.requireNotBlank;
-import static com.reedelk.runtime.api.commons.ConfigurationPreconditions.requireNotNull;
+import static com.reedelk.runtime.api.commons.ComponentPrecondition.Configuration.requireNotBlank;
+import static com.reedelk.runtime.api.commons.ComponentPrecondition.Configuration.requireNotNull;
 import static java.util.Optional.of;
 import static java.util.Optional.ofNullable;
 import static org.osgi.service.component.annotations.ServiceScope.PROTOTYPE;

@@ -12,7 +12,7 @@ import org.osgi.service.component.annotations.Component;
 import java.io.IOException;
 
 import static com.reedelk.rabbitmq.internal.commons.Messages.RabbitMQConsumer.CONSUME_ERROR;
-import static com.reedelk.runtime.api.commons.ConfigurationPreconditions.requireNotBlank;
+import static com.reedelk.runtime.api.commons.ComponentPrecondition.Configuration.requireNotBlank;
 import static java.util.Optional.of;
 import static java.util.Optional.ofNullable;
 import static org.osgi.service.component.annotations.ServiceScope.PROTOTYPE;
