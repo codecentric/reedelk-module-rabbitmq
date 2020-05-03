@@ -1,13 +1,15 @@
 package com.reedelk.rabbitmq.component;
 
-import com.reedelk.runtime.api.annotation.*;
+import com.reedelk.runtime.api.annotation.DefaultValue;
+import com.reedelk.runtime.api.annotation.Description;
+import com.reedelk.runtime.api.annotation.Property;
+import com.reedelk.runtime.api.annotation.When;
 import com.reedelk.runtime.api.component.Implementor;
 import org.osgi.service.component.annotations.Component;
 
 import static java.util.Optional.ofNullable;
 import static org.osgi.service.component.annotations.ServiceScope.PROTOTYPE;
 
-@Collapsible
 @Component(service = RabbitMQProducerQueueConfiguration.class, scope = PROTOTYPE)
 public class RabbitMQProducerQueueConfiguration implements Implementor {
 
@@ -20,20 +22,20 @@ public class RabbitMQProducerQueueConfiguration implements Implementor {
 
     @Property("Durable after restart")
     @DefaultValue("false")
-    @When(propertyName = "create", propertyValue = "true")
     @Description("If true the queue will survive a server restart.")
+    @When(propertyName = "create", propertyValue = "true")
     private Boolean durable;
 
     @Property("Exclusive to connection")
     @DefaultValue("false")
-    @When(propertyName = "create", propertyValue = "true")
     @Description("If true the use of the queue will be restricted to this connection.")
+    @When(propertyName = "create", propertyValue = "true")
     private Boolean exclusive;
 
     @Property("Auto Delete")
     @DefaultValue("false")
-    @When(propertyName = "create", propertyValue = "true")
     @Description("If true the server will delete the queue when it is no longer in use.")
+    @When(propertyName = "create", propertyValue = "true")
     private Boolean autoDelete;
 
     public void setDurable(Boolean durable) {

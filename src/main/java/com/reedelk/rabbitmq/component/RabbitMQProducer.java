@@ -57,6 +57,7 @@ public class RabbitMQProducer implements ProcessorSync {
     private DynamicString queueName;
 
     @Property("Queue Configuration")
+    @Group("Queue Configuration")
     @When(propertyName = "queueName", propertyValue = When.NOT_SCRIPT)
     private RabbitMQProducerQueueConfiguration queueConfiguration;
 
