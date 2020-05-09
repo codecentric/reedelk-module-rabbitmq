@@ -28,7 +28,7 @@ public class RabbitMQConsumer extends AbstractInbound {
 
     @DialogTitle("RabbitMQ Connection Factory")
     @Property("Connection")
-    private ConnectionConfiguration configuration;
+    private ConnectionConfiguration connection;
 
     @Property("Connection URI")
     @Hint("amqp://guest:guest@localhost:5672")
@@ -69,20 +69,20 @@ public class RabbitMQConsumer extends AbstractInbound {
     private boolean autoAck;
 
     private Channel channel;
-    private Connection connection;
+    private Connection client;
 
     @Override
     public void onStart() {
         requireNotBlank(RabbitMQConsumer.class, queueName, "Queue Name must not be empty");
-        if (configuration == null) {
+        if (connection == null) {
             requireNotBlank(RabbitMQConsumer.class, connectionURI, "Connection URI must not be empty");
-            connection = ConnectionFactoryProvider.from(connectionURI);
+            client = ConnectionFactoryProvider.from(connectionURI);
         } else {
-            connection = ConnectionFactoryProvider.from(configuration);
+            client = ConnectionFactoryProvider.from(connection);
         }
 
         try {
-            channel = connection.createChannel();
+            channel = client.createChannel();
             createQueueIfNeeded();
             MimeType queueMessageContentType = MimeType.parse(messageMimeType, MimeType.TEXT_PLAIN);
             if (autoAck) {
@@ -104,11 +104,11 @@ public class RabbitMQConsumer extends AbstractInbound {
     @Override
     public void onShutdown() {
         ChannelUtils.closeSilently(channel);
-        ChannelUtils.closeSilently(connection);
+        ChannelUtils.closeSilently(client);
     }
 
-    public void setConfiguration(ConnectionConfiguration configuration) {
-        this.configuration = configuration;
+    public void setConnection(ConnectionConfiguration connection) {
+        this.connection = connection;
     }
 
     public void setQueueName(String queueName) {

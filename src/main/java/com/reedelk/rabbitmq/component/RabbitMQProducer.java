@@ -36,7 +36,7 @@ public class RabbitMQProducer implements ProcessorSync {
 
     @DialogTitle("RabbitMQ Connection Factory")
     @Property("Connection")
-    private ConnectionConfiguration configuration;
+    private ConnectionConfiguration connection;
 
     @Property("Connection URI")
     @Description("Configure a connection using the provided AMQP URI " +
@@ -67,7 +67,7 @@ public class RabbitMQProducer implements ProcessorSync {
     private ScriptEngineService scriptEngine;
 
     private Channel channel;
-    private Connection connection;
+    private Connection client;
 
     @Override
     public Message apply(FlowContext flowContext, Message message) {
@@ -100,14 +100,14 @@ public class RabbitMQProducer implements ProcessorSync {
     public void initialize() {
         requireNotNull(RabbitMQProducer.class, queueName, "Queue Name must not be null");
         requireNotBlank(RabbitMQProducer.class, queueName.value(), "Queue Name must not be empty");
-        if (configuration == null) {
+        if (connection == null) {
             requireNotBlank(RabbitMQProducer.class, connectionURI, "Connection URI must not be empty");
-            connection = ConnectionFactoryProvider.from(connectionURI);
+            client = ConnectionFactoryProvider.from(connectionURI);
         } else {
-            connection = ConnectionFactoryProvider.from(configuration);
+            client = ConnectionFactoryProvider.from(connection);
         }
         try {
-            channel = connection.createChannel();
+            channel = client.createChannel();
             createQueueIfNeeded();
         } catch (IOException exception) {
             String message = CREATE_CHANNEL_ERROR.format(exception.getMessage());
@@ -118,11 +118,11 @@ public class RabbitMQProducer implements ProcessorSync {
     @Override
     public void dispose() {
         ChannelUtils.closeSilently(channel);
-        ChannelUtils.closeSilently(connection);
+        ChannelUtils.closeSilently(client);
     }
 
-    public void setConfiguration(ConnectionConfiguration configuration) {
-        this.configuration = configuration;
+    public void setConnection(ConnectionConfiguration connection) {
+        this.connection = connection;
     }
 
     public void setConnectionURI(String connectionURI) {
