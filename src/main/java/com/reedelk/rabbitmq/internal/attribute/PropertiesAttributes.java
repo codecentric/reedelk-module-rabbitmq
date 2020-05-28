@@ -9,9 +9,9 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.reedelk.rabbitmq.internal.attribute.RabbitMQConsumerPropertiesAttributes.*;
+import static com.reedelk.rabbitmq.internal.attribute.PropertiesAttributes.*;
 
-@Type
+@Type(displayName = "PropertiesAttributes", mapKeyType = String.class, mapValueType = Serializable.class)
 @TypeProperty(name = CONTENT_ENCODING, type = String.class)
 @TypeProperty(name = CORRELATION_ID, type = String.class)
 @TypeProperty(name = DELIVERY_MODE, type = Integer.class)
@@ -26,7 +26,7 @@ import static com.reedelk.rabbitmq.internal.attribute.RabbitMQConsumerProperties
 @TypeProperty(name = USER_ID, type = String.class)
 @TypeProperty(name = APP_ID, type = String.class)
 @TypeProperty(name = TYPE, type = String.class)
-public class RabbitMQConsumerPropertiesAttributes extends HashMap<String, Serializable> {
+public class PropertiesAttributes extends HashMap<String, Serializable> {
 
     static final String CONTENT_ENCODING = "contentEncoding";
     static final String CORRELATION_ID = "correlationId";
@@ -43,7 +43,7 @@ public class RabbitMQConsumerPropertiesAttributes extends HashMap<String, Serial
     static final String APP_ID = "appId";
     static final String TYPE = "type";
 
-    public RabbitMQConsumerPropertiesAttributes(AMQP.BasicProperties properties) {
+    public PropertiesAttributes(AMQP.BasicProperties properties) {
         put(CONTENT_ENCODING, properties.getContentEncoding());
         put(CORRELATION_ID, properties.getCorrelationId());
         put(DELIVERY_MODE, properties.getDeliveryMode());
