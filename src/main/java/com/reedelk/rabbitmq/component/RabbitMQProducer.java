@@ -28,6 +28,12 @@ import static java.util.Optional.ofNullable;
 import static org.osgi.service.component.annotations.ServiceScope.PROTOTYPE;
 
 @ModuleComponent("RabbitMQ Producer")
+@ComponentOutput(
+        attributes = ComponentOutput.PreviousComponent.class,
+        payload = ComponentOutput.PreviousComponent.class)
+@ComponentInput(
+        payload = Object.class,
+        description = "The data to be published to the broker queue.")
 @Description("Sends the message payload to a RabbitMQ broker queue. " +
                 "The component might be configured to create " +
                 "the destination queue if it does not exists already.")

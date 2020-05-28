@@ -3,6 +3,7 @@ package com.reedelk.rabbitmq.component;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.reedelk.rabbitmq.internal.*;
+import com.reedelk.rabbitmq.internal.attribute.RabbitMQConsumerAttributes;
 import com.reedelk.rabbitmq.internal.exception.RabbitMQConsumerException;
 import com.reedelk.runtime.api.annotation.*;
 import com.reedelk.runtime.api.component.AbstractInbound;
@@ -18,6 +19,10 @@ import static java.util.Optional.ofNullable;
 import static org.osgi.service.component.annotations.ServiceScope.PROTOTYPE;
 
 @ModuleComponent("RabbitMQ Consumer")
+@ComponentOutput(
+        attributes = RabbitMQConsumerAttributes.class,
+        payload = { String.class, byte[].class },
+        description = "The data consumed from the broker queue")
 @Description("Consumes messages from a RabbitMQ broker queue whenever a message " +
                 "is published to the subscribed queue. The component might be configured " +
                 "to create the source queue if it does not exists already. " +
