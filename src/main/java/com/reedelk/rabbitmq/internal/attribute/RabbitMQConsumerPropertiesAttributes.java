@@ -51,12 +51,15 @@ public class RabbitMQConsumerPropertiesAttributes extends HashMap<String, Serial
         put(EXPIRATION, properties.getExpiration());
         put(CLUSTER_ID, properties.getClusterId());
         put(MESSAGE_ID, properties.getMessageId());
-        put(TIMESTAMP, properties.getTimestamp().getTime());
         put(PRIORITY, properties.getPriority());
         put(REPLY_TO, properties.getReplyTo());
         put(HEADERS, SerializableUtils.asSafeSerializableMap(properties.getHeaders()));
         put(USER_ID, properties.getUserId());
         put(APP_ID, properties.getAppId());
         put(TYPE, properties.getType());
+
+        if (properties.getTimestamp() != null) {
+            put(TIMESTAMP, properties.getTimestamp().getTime());
+        }
     }
 }

@@ -49,8 +49,8 @@ public class RabbitMQProducer implements ProcessorSync {
             "containing the connection data.")
     @Hint("amqp://guest:guest@localhost:5672")
     @InitValue("amqp://guest:guest@localhost:5672")
-    @When(propertyName = "configuration", propertyValue = When.NULL)
-    @When(propertyName = "configuration", propertyValue = "{'ref': '" + When.BLANK + "'}")
+    @When(propertyName = "connection", propertyValue = When.NULL)
+    @When(propertyName = "connection", propertyValue = "{'ref': '" + When.BLANK + "'}")
     private String connectionURI;
 
     @Property("Exchange Name")
