@@ -1,37 +1,7 @@
 [
   {
-    "version": "0.9.1-SNAPHSOT",
-    "date": "6/3/2020",
-    "release-notes": "<ul><li>Bugfix: fixed null pointer exception in RabbitMQ Producer when queue name is null.</li><li>Bugfix: fixed RabbitMQConsumer to automatically convert payload body from provided mime type.</li></ul>"
-  },
-  {
-    "version": "0.9.0",
-    "date": "5/3/2020",
-    "release-notes": "<ul><li>Feature: released version compatible for 0.9.x.</li></ul>"
-  },
-  {
-    "version": "0.8.1",
-    "date": "19/2/2020",
-    "release-notes": ""
-  },
-  {
-    "version": "0.8.0",
-    "date": "10/2/2020",
-    "release-notes": ""
-  },
-  {
-    "version": "0.7.0",
-    "date": "20/1/2020",
-    "release-notes": ""
-  },
-  {
-    "version": "0.6.1",
-    "date": "14/1/2020",
-    "release-notes": ""
-  },
-  {
-    "version": "0.6.0",
-    "date": "06/1/2020",
-    "release-notes": ""
+    "version": "1.0.0",
+    "date": "22/6/2020",
+    "release-notes": "<ul><li>First module-rabbitmq release.</li><ul>"
   }
 ]
