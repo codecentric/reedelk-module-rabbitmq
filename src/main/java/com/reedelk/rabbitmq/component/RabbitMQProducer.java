@@ -32,7 +32,7 @@ import static org.osgi.service.component.annotations.ServiceScope.PROTOTYPE;
         attributes = ComponentOutput.PreviousComponent.class,
         payload = ComponentOutput.PreviousComponent.class)
 @ComponentInput(
-        payload = Object.class,
+        payload = { String.class, byte[].class },
         description = "The data to be published to the broker queue.")
 @Description("Sends the message payload to a RabbitMQ broker queue. " +
                 "The component might be configured to create " +
