@@ -22,7 +22,7 @@ import java.util.UUID;
 
 import static com.reedelk.rabbitmq.internal.commons.Messages.RabbitMQProducer.*;
 import static com.reedelk.runtime.api.commons.ComponentPrecondition.Configuration.requireNotBlank;
-import static com.reedelk.runtime.api.commons.ComponentPrecondition.Configuration.requireNotNull;
+import static com.reedelk.runtime.api.commons.ComponentPrecondition.Configuration.requireTrue;
 import static java.util.Optional.of;
 import static java.util.Optional.ofNullable;
 import static org.osgi.service.component.annotations.ServiceScope.PROTOTYPE;
@@ -104,8 +104,9 @@ public class RabbitMQProducer implements ProcessorSync {
 
     @Override
     public void initialize() {
-        requireNotNull(RabbitMQProducer.class, queueName, "Queue Name must not be null");
-        requireNotBlank(RabbitMQProducer.class, queueName.value(), "Queue Name must not be empty");
+        requireTrue(RabbitMQProducer.class,
+                isNotBlank(queueName) || isNotBlank(exchangeName),
+                "Queue Name and Exchange Name: must not be both empty. At least one must be provided.");
         if (connection == null) {
             requireNotBlank(RabbitMQProducer.class, connectionURI, "Connection URI must not be empty");
             client = ConnectionFactoryProvider.from(connectionURI);
@@ -173,5 +174,10 @@ public class RabbitMQProducer implements ProcessorSync {
             boolean autoDelete = RabbitMQProducerQueueConfiguration.isAutoDelete(queueConfiguration);
             channel.queueDeclare(queueName.value(), durable, exclusive, autoDelete, null);
         }
+    }
+
+    private boolean isNotBlank(DynamicString dynamicValue) {
+        return dynamicValue != null &&
+                StringUtils.isNotBlank(dynamicValue.value());
     }
 }

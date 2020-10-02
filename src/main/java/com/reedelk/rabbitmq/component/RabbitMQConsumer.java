@@ -39,8 +39,8 @@ public class RabbitMQConsumer extends AbstractInbound {
     @Hint("amqp://guest:guest@localhost:5672")
     @InitValue("amqp://guest:guest@localhost:5672")
     @Example("amqp://guest:guest@localhost:5672")
-    @When(propertyName = "configuration", propertyValue = When.NULL)
-    @When(propertyName = "configuration", propertyValue = "{'ref': '" + When.BLANK + "'}")
+    @When(propertyName = "connection", propertyValue = When.NULL)
+    @When(propertyName = "connection", propertyValue = "{'ref': '" + When.BLANK + "'}")
     @Description("Configure a connection using the provided AMQP URI " +
             "containing the connection data.")
     private String connectionURI;
