@@ -20,7 +20,8 @@ import org.osgi.service.component.annotations.Reference;
 import java.io.IOException;
 import java.util.UUID;
 
-import static com.reedelk.rabbitmq.internal.commons.Messages.RabbitMQProducer.*;
+import static com.reedelk.rabbitmq.internal.commons.Messages.RabbitMQProducer.CREATE_CHANNEL_ERROR;
+import static com.reedelk.rabbitmq.internal.commons.Messages.RabbitMQProducer.PUBLISH_MESSAGE_ERROR;
 import static com.reedelk.runtime.api.commons.ComponentPrecondition.Configuration.requireNotBlank;
 import static com.reedelk.runtime.api.commons.ComponentPrecondition.Configuration.requireTrue;
 import static java.util.Optional.of;
@@ -79,7 +80,7 @@ public class RabbitMQProducer implements ProcessorSync {
     public Message apply(FlowContext flowContext, Message message) {
 
         String evaluatedQueueName = scriptEngine.evaluate(queueName, flowContext, message)
-                .orElseThrow(() -> new RabbitMQProducerException(QUEUE_EMPTY_ERROR.format(queueName.value())));
+                .orElse(StringUtils.EMPTY);
 
         String evaluatedExchangeName = scriptEngine.evaluate(exchangeName, flowContext, message)
                 .orElse(StringUtils.EMPTY);
@@ -165,7 +166,8 @@ public class RabbitMQProducer implements ProcessorSync {
 
     private void createQueueIfNeeded() throws IOException {
         // If it is a script we cannot create it.
-        if (queueName.isScript()) return;
+        // If the queue name is null, it means we have just defined the exchange.
+        if (queueName != null && queueName.isScript()) return;
 
         boolean shouldDeclareQueue = shouldDeclareQueue();
         if (shouldDeclareQueue) {
