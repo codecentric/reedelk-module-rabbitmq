@@ -1,7 +1,7 @@
 [
   {
     "version": "1.0.6",
-    "date": "//TODO",
+    "date": "6/10/2020",
     "release-notes": "<ul><li>bugfix: connection uri input field visibility was wrong when connection not defined.</li><li>bugfix: the RabbitMQ producer might now have queue name empty, for instance when only exchange name is provided.</li><ul>"
   },
   {
