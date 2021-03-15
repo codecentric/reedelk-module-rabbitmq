@@ -1,18 +1,18 @@
-package com.reedelk.rabbitmq.internal.attribute;
+package de.codecentric.reedelk.rabbitmq.internal.attribute;
 
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Delivery;
 import com.rabbitmq.client.Envelope;
-import com.reedelk.runtime.api.annotation.Type;
-import com.reedelk.runtime.api.annotation.TypeProperty;
-import com.reedelk.runtime.api.message.MessageAttributeKey;
-import com.reedelk.runtime.api.message.MessageAttributes;
+import de.codecentric.reedelk.runtime.api.annotation.Type;
+import de.codecentric.reedelk.runtime.api.annotation.TypeProperty;
+import de.codecentric.reedelk.runtime.api.message.MessageAttributeKey;
+import de.codecentric.reedelk.runtime.api.message.MessageAttributes;
 
 import java.io.Serializable;
 import java.util.HashMap;
 
-import static com.reedelk.rabbitmq.internal.attribute.RabbitMQConsumerAttributes.ENVELOPE;
-import static com.reedelk.rabbitmq.internal.attribute.RabbitMQConsumerAttributes.PROPERTIES;
+import static de.codecentric.reedelk.rabbitmq.internal.attribute.RabbitMQConsumerAttributes.ENVELOPE;
+import static de.codecentric.reedelk.rabbitmq.internal.attribute.RabbitMQConsumerAttributes.PROPERTIES;
 
 @Type
 @TypeProperty(name = PROPERTIES, type = PropertiesAttributes.class)

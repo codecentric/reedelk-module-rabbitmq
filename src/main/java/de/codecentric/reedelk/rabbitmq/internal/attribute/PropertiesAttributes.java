@@ -1,15 +1,15 @@
-package com.reedelk.rabbitmq.internal.attribute;
+package de.codecentric.reedelk.rabbitmq.internal.attribute;
 
 import com.rabbitmq.client.AMQP;
-import com.reedelk.runtime.api.annotation.Type;
-import com.reedelk.runtime.api.annotation.TypeProperty;
-import com.reedelk.runtime.api.commons.SerializableUtils;
+import de.codecentric.reedelk.runtime.api.annotation.Type;
+import de.codecentric.reedelk.runtime.api.annotation.TypeProperty;
+import de.codecentric.reedelk.runtime.api.commons.SerializableUtils;
 
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.reedelk.rabbitmq.internal.attribute.PropertiesAttributes.*;
+import static de.codecentric.reedelk.rabbitmq.internal.attribute.PropertiesAttributes.*;
 
 @Type(displayName = "PropertiesAttributes", mapKeyType = String.class, mapValueType = Serializable.class)
 @TypeProperty(name = CONTENT_ENCODING, type = String.class)

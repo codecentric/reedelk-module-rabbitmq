@@ -1,29 +1,29 @@
-package com.reedelk.rabbitmq.component;
+package de.codecentric.reedelk.rabbitmq.component;
 
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
-import com.reedelk.rabbitmq.internal.ChannelUtils;
-import com.reedelk.rabbitmq.internal.ConnectionFactoryProvider;
-import com.reedelk.rabbitmq.internal.exception.RabbitMQProducerException;
-import com.reedelk.runtime.api.annotation.*;
-import com.reedelk.runtime.api.commons.StringUtils;
-import com.reedelk.runtime.api.component.ProcessorSync;
-import com.reedelk.runtime.api.converter.ConverterService;
-import com.reedelk.runtime.api.flow.FlowContext;
-import com.reedelk.runtime.api.message.Message;
-import com.reedelk.runtime.api.script.ScriptEngineService;
-import com.reedelk.runtime.api.script.dynamicvalue.DynamicString;
+import de.codecentric.reedelk.rabbitmq.internal.ChannelUtils;
+import de.codecentric.reedelk.rabbitmq.internal.ConnectionFactoryProvider;
+import de.codecentric.reedelk.rabbitmq.internal.exception.RabbitMQProducerException;
+import de.codecentric.reedelk.runtime.api.annotation.*;
+import de.codecentric.reedelk.runtime.api.commons.StringUtils;
+import de.codecentric.reedelk.runtime.api.component.ProcessorSync;
+import de.codecentric.reedelk.runtime.api.converter.ConverterService;
+import de.codecentric.reedelk.runtime.api.flow.FlowContext;
+import de.codecentric.reedelk.runtime.api.message.Message;
+import de.codecentric.reedelk.runtime.api.script.ScriptEngineService;
+import de.codecentric.reedelk.runtime.api.script.dynamicvalue.DynamicString;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
 import java.io.IOException;
 import java.util.UUID;
 
-import static com.reedelk.rabbitmq.internal.commons.Messages.RabbitMQProducer.CREATE_CHANNEL_ERROR;
-import static com.reedelk.rabbitmq.internal.commons.Messages.RabbitMQProducer.PUBLISH_MESSAGE_ERROR;
-import static com.reedelk.runtime.api.commons.ComponentPrecondition.Configuration.requireNotBlank;
-import static com.reedelk.runtime.api.commons.ComponentPrecondition.Configuration.requireTrue;
+import static de.codecentric.reedelk.rabbitmq.internal.commons.Messages.RabbitMQProducer.CREATE_CHANNEL_ERROR;
+import static de.codecentric.reedelk.rabbitmq.internal.commons.Messages.RabbitMQProducer.PUBLISH_MESSAGE_ERROR;
+import static de.codecentric.reedelk.runtime.api.commons.ComponentPrecondition.Configuration.requireNotBlank;
+import static de.codecentric.reedelk.runtime.api.commons.ComponentPrecondition.Configuration.requireTrue;
 import static java.util.Optional.of;
 import static java.util.Optional.ofNullable;
 import static org.osgi.service.component.annotations.ServiceScope.PROTOTYPE;

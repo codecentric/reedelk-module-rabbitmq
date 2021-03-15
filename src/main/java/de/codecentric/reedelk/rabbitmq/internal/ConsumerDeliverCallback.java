@@ -1,15 +1,15 @@
-package com.reedelk.rabbitmq.internal;
+package de.codecentric.reedelk.rabbitmq.internal;
 
 import com.rabbitmq.client.DeliverCallback;
 import com.rabbitmq.client.Delivery;
-import com.reedelk.rabbitmq.component.RabbitMQConsumer;
-import com.reedelk.rabbitmq.internal.attribute.RabbitMQConsumerAttributes;
-import com.reedelk.runtime.api.message.Message;
-import com.reedelk.runtime.api.message.MessageAttributes;
-import com.reedelk.runtime.api.message.MessageBuilder;
-import com.reedelk.runtime.api.message.content.MimeType;
+import de.codecentric.reedelk.rabbitmq.component.RabbitMQConsumer;
+import de.codecentric.reedelk.rabbitmq.internal.attribute.RabbitMQConsumerAttributes;
+import de.codecentric.reedelk.runtime.api.message.Message;
+import de.codecentric.reedelk.runtime.api.message.MessageAttributes;
+import de.codecentric.reedelk.runtime.api.message.MessageBuilder;
+import de.codecentric.reedelk.runtime.api.message.content.MimeType;
 
-import static com.reedelk.runtime.api.commons.Preconditions.checkArgument;
+import static de.codecentric.reedelk.runtime.api.commons.Preconditions.checkArgument;
 
 abstract class ConsumerDeliverCallback implements DeliverCallback {
 
