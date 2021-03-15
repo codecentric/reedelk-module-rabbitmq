@@ -1,13 +1,13 @@
-package com.reedelk.rabbitmq.internal.attribute;
+package de.codecentric.reedelk.rabbitmq.internal.attribute;
 
 import com.rabbitmq.client.Envelope;
-import com.reedelk.runtime.api.annotation.Type;
-import com.reedelk.runtime.api.annotation.TypeProperty;
+import de.codecentric.reedelk.runtime.api.annotation.Type;
+import de.codecentric.reedelk.runtime.api.annotation.TypeProperty;
 
 import java.io.Serializable;
 import java.util.HashMap;
 
-import static com.reedelk.rabbitmq.internal.attribute.EnvelopeAttributes.*;
+import static de.codecentric.reedelk.rabbitmq.internal.attribute.EnvelopeAttributes.*;
 
 @Type(displayName = "EnvelopeAttributes", mapKeyType = String.class, mapValueType = Serializable.class)
 @TypeProperty(name = DELIVERY_TAG, type = long.class)

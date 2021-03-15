@@ -1,4 +1,4 @@
-package com.reedelk.rabbitmq.internal;
+package de.codecentric.reedelk.rabbitmq.internal;
 
 import com.rabbitmq.client.CancelCallback;
 

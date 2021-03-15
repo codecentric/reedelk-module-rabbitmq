@@ -1,18 +1,18 @@
-package com.reedelk.rabbitmq.internal;
+package de.codecentric.reedelk.rabbitmq.internal;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Delivery;
-import com.reedelk.runtime.api.component.InboundEventListener;
-import com.reedelk.runtime.api.component.OnResult;
-import com.reedelk.runtime.api.flow.FlowContext;
-import com.reedelk.runtime.api.message.Message;
-import com.reedelk.runtime.api.message.content.MimeType;
+import de.codecentric.reedelk.runtime.api.component.InboundEventListener;
+import de.codecentric.reedelk.runtime.api.component.OnResult;
+import de.codecentric.reedelk.runtime.api.flow.FlowContext;
+import de.codecentric.reedelk.runtime.api.message.Message;
+import de.codecentric.reedelk.runtime.api.message.content.MimeType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
-import static com.reedelk.runtime.api.commons.Preconditions.checkArgument;
+import static de.codecentric.reedelk.runtime.api.commons.Preconditions.checkArgument;
 
 public class ConsumerDeliverCallbackExplicitAck extends ConsumerDeliverCallback {
 

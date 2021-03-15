@@ -1,7 +1,7 @@
-package com.reedelk.rabbitmq.component;
+package de.codecentric.reedelk.rabbitmq.component;
 
-import com.reedelk.runtime.api.annotation.*;
-import com.reedelk.runtime.api.component.Implementor;
+import de.codecentric.reedelk.runtime.api.annotation.*;
+import de.codecentric.reedelk.runtime.api.component.Implementor;
 import org.osgi.service.component.annotations.Component;
 
 import static java.util.Optional.ofNullable;

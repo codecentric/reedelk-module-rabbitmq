@@ -1,19 +1,19 @@
-package com.reedelk.rabbitmq.component;
+package de.codecentric.reedelk.rabbitmq.component;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
-import com.reedelk.rabbitmq.internal.*;
-import com.reedelk.rabbitmq.internal.attribute.RabbitMQConsumerAttributes;
-import com.reedelk.rabbitmq.internal.exception.RabbitMQConsumerException;
-import com.reedelk.runtime.api.annotation.*;
-import com.reedelk.runtime.api.component.AbstractInbound;
-import com.reedelk.runtime.api.message.content.MimeType;
+import de.codecentric.reedelk.rabbitmq.internal.*;
+import de.codecentric.reedelk.rabbitmq.internal.attribute.RabbitMQConsumerAttributes;
+import de.codecentric.reedelk.rabbitmq.internal.exception.RabbitMQConsumerException;
+import de.codecentric.reedelk.runtime.api.annotation.*;
+import de.codecentric.reedelk.runtime.api.component.AbstractInbound;
+import de.codecentric.reedelk.runtime.api.message.content.MimeType;
 import org.osgi.service.component.annotations.Component;
 
 import java.io.IOException;
 
-import static com.reedelk.rabbitmq.internal.commons.Messages.RabbitMQConsumer.CONSUME_ERROR;
-import static com.reedelk.runtime.api.commons.ComponentPrecondition.Configuration.requireNotBlank;
+import static de.codecentric.reedelk.rabbitmq.internal.commons.Messages.RabbitMQConsumer.CONSUME_ERROR;
+import static de.codecentric.reedelk.runtime.api.commons.ComponentPrecondition.Configuration.requireNotBlank;
 import static java.util.Optional.of;
 import static java.util.Optional.ofNullable;
 import static org.osgi.service.component.annotations.ServiceScope.PROTOTYPE;

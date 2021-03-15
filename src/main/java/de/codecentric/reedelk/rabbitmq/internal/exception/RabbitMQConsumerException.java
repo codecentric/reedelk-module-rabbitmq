@@ -1,6 +1,6 @@
-package com.reedelk.rabbitmq.internal.exception;
+package de.codecentric.reedelk.rabbitmq.internal.exception;
 
-import com.reedelk.runtime.api.exception.PlatformException;
+import de.codecentric.reedelk.runtime.api.exception.PlatformException;
 
 public class RabbitMQConsumerException extends PlatformException {
 
